@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+/* .header-line{
+    height: 43px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+}
+
+.header-line-left{
+    display: flex;
+    width: 50%; 
+   justify-content: space-around;
+}
+
+.header-line-left h5{
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-size: 14px;
+    text-transform: uppercase;
+ } */
+
+ body{font-family:Inter,system-ui,Arial,Helvetica,sans-serif;line-height:1.4;color:#222;background:#fff}
+.container{max-width:1200px;margin:0 auto;padding:0 16px}
