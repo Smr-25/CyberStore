@@ -1,43 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="az">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyberstore Clone</title>
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title>CyberStore</title>
 </head>
-
 <body>
-    <!-- <div class="header-line">
-            <div class="header-line-left">
-                <h5>Super Deals</h5>
-                <h5>Feautured</h5>
-                <h5>BrandsTrending </h5>
-                <h5>StylesGift Cards</h5>
+
+    <!-- TOP BLACK BAR -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="left-links">
+                <a href="#">SUPER DEALS</a>
+                <a href="#">FEATURED BRANDS</a>
+                <a href="#">TRENDING STYLES</a>
+                <a href="#">GIFT CARDS</a>
             </div>
-            <div class="header-line-right">
-                <h5>Help & FAQs</h5>
-                <h5>My Account</h5>
-                <h5>EN</h5>
-                <h5>USD</h5>    
+
+            <div class="right-links">
+                <a href="#">STORE LOCATOR</a>
+                <a href="#">TRACK YOUR ORDER</a>
+                <a href="#">MY ACCOUNT</a>
             </div>
-        </div> -->
-    <!-- HEADER / TOPBAR -->
-    <header class="site-header">
-        <div class="topbar">
-            <div class="container">
-                <div class="top-left">
-                    <span class="phone">Call us toll free: (+1)866-540-3229</span>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <header class="header">
+        <div class="container header-flex">
+
+            <!-- LOGO -->
+            <div class="logo">CYBERSTORE<span class="dot">.</span></div>
+
+            <!-- CATEGORY + SEARCH -->
+            <div class="search-area">
+
+                <div class="categories">
+                    <button class="cat-btn">
+                        All Categories ▼
+                    </button>
                 </div>
-                <div class="top-right">
-                    <a href="#">Store Locator</a>
-                    <a href="#">Track Your Order</a>
-                    <a href="#">My Account</a>
+
+                <div class="search-box">
+                    <input type="text" placeholder="Search for Product...">
+                    <button class="search-btn">🔍</button>
                 </div>
+
+            </div>
+
+            <!-- ICONS -->
+            <div class="icons">
+                <span class="settings">⚙️</span>
+                <span class="wishlist">🤍</span>
+                <span class="cart">🛒 (0)</span>
+            </div>
+
+        </div>
+
+        <!-- DEPARTMENTS + MENU -->
+        <nav class="nav">
+            <div class="container nav-flex">
+                <button class="departments-btn active">
+                    All Departments
+                </button>
+
+                <ul class="menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Pages</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Elements</a></li>
+                </ul>
+
+                <div class="nav-phone">
+                    Call us toll free: <strong>(+1)866-540-3229</strong>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- SLIDER -->
+    <section class="slider">
+        <div class="slide">
+            <h1>Apple Watches - <strong>30% off</strong></h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+
+            <div class="slide-images">
+                <img src="watch1.png" alt="">
+                <img src="watch2.png" alt="">
+                <img src="watch3.png" alt="">
             </div>
         </div>
 
-</body>
+        <button class="arrow left">‹</button>
+        <button class="arrow right">›</button>
+    </section>
 
+<script src="./assets/js/script.js"></script>
+</body>
 </html>
