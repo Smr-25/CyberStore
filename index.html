@@ -13,7 +13,7 @@
 <body>
 
 <header class="header">
-    <div class="container">
+    <div class="container header-container">
         <div class="nav-left">
             <h5>Super Deals</h5>
             <h5>Featured Brands</h5>
@@ -41,39 +41,63 @@
 </header>
 
 <section class="cyberstore-bar">
-    <div class="cyberstore-left">
-        <span class="cyberstore-logo">CYBERSTORE</span>
-        <span class="cyberstore-dot"></span>
+    <div class="container cyberstore-container">
+        <div class="cyberstore-left">
+            <span class="cyberstore-logo">CYBERSTORE</span>
+            <span class="cyberstore-dot"></span>
+        </div>
     </div>
 </section>
 
 <section class="search-section">
-    <div class="search-container">
+    <div class="container search-container">
 
-        <button class="category-select">
-            <span>All Categories</span>
-            <i class="fa-solid fa-chevron-down"></i>
-        </button>
+        <div class="category-select">
+            <button class="category-trigger" type="button">
+                <span>All Categories</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <ul class="category-menu">
+                <li>Audio & Sound</li>
+                <li>Smart Home</li>
+                <li>Gaming</li>
+                <li>Laptops</li>
+                <li>Desktops</li>
+                <li>Tablets</li>
+                <li>Smartphones</li>
+                <li>Drones</li>
+                <li>Wearables</li>
+                <li>Cameras</li>
+                <li>Accessories</li>
+                <li>Networking</li>
+                <li>Office Tech</li>
+                <li>Home Appliances</li>
+                <li>Monitors</li>
+                <li>Storage</li>
+                <li>VR & AR</li>
+                <li>Electric Mobility</li>
+            </ul>
+        </div>
 
         <div class="search-field">
             <input type="text" placeholder="Search for Product...">
-            <button class="search-button">
+            <button class="search-button" type="button">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
         </div>
 
         <div class="search-actions">
 
-            <button class="filter-button">
-                <i class="fa-solid fa-sliders-h"></i>
+            <button class="filter-button" type="button">
+                <i class="fa-solid fa-sliders"></i>
                 <span>Filter</span>
             </button>
 
-            <button class="icon-button">
+            <button class="icon-button" type="button">
                 <i class="fa-regular fa-heart"></i>
             </button>
 
-            <button class="cart-button">
+            <button class="cart-button" type="button">
                 <div class="cart-icon-wrapper">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span class="cart-badge">0</span>
@@ -82,6 +106,26 @@
             </button>
 
         </div>
+    </div>
+</section>
+
+<section class="departments-section">
+    <div class="container departments-container">
+        <div class="departments-left">
+            <button class="departments-trigger" type="button">
+                <i class="fa-solid fa-table-cells-large"></i>
+                <span>All Departments</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+        </div>
+        <nav class="departments-nav">
+            <a href="#">Home</a>
+            <a href="#">Pages</a>
+            <a href="#">Shop</a>
+            <a href="#">Blog</a>
+            <a href="#">Elements</a>
+            <span class="contact-label">Call us toll free: <strong>(+1)866-540-3229</strong></span>
+        </nav>
     </div>
 </section>
 
