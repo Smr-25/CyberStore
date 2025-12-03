@@ -355,3 +355,32 @@ body {
     font-weight: 600;
     color: #1f2937;
 }
+
+.category-select:hover{
+    .category-menu{
+        visibility: visible;
+    }
+}
+
+.three-models{
+    height: 448px;
+    background-color: #0a0a0a;
+    margin: 12px 41px;
+}
+
+.advantages{
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 0;
+}
+.advantages .call-center{
+    border: 1px solid #d1d5db;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+.advantages .call-center i{
+    font-size: 32px;
+    color: #7c3aed;
+}
