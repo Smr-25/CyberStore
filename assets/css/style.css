@@ -49,29 +49,39 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
+    cursor: pointer;
 }
 
+/* Hover effects - item içindeki hem icon hem de h5 grey olur */
 .nav-item:hover h5,
-.nav-item:hover i,
+.nav-item:hover i {
+    color: #9ca3af;
+}
+
+/* Sol taraftaki elementlerin hover efekti */
 .nav-left h5:hover {
     color: #9ca3af;
 }
 
-/* CYBERSTORE BAR */
-.cyberstore-bar {
+/* MAIN BAR - Logo və Search Bar Yan Yana */
+.main-bar {
     background-color: #fff;
     border-bottom: 1px solid #e5e7eb;
+    padding: 20px 0;
 }
 
-.cyberstore-container {
-    height: 70px;
-    justify-content: flex-start;
+.main-bar-container {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    height: auto;
 }
 
 .cyberstore-left {
     display: flex;
     align-items: flex-end;
     gap: 8px;
+    flex-shrink: 0;
 }
 
 .cyberstore-logo {
@@ -88,16 +98,6 @@ body {
     margin-bottom: 6px;
 }
 
-/* SEARCH SECTION */
-.search-section {
-    padding: 24px 0;
-}
-
-.search-container {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
 
 .category-select {
     display: flex;
@@ -361,6 +361,7 @@ body {
         visibility: visible;
     }
 }
+
 
 .three-models{
     height: 448px;
