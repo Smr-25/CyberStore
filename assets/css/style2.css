@@ -567,6 +567,26 @@ body {
     font-size: 24px;
     font-weight: 700;
     margin: 0;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.feature-number::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 2px;
+    background-color: rgb(93, 118, 244);
+    transition: width 0.4s ease;
+    transform-origin: left;
+}
+
+.feature-number:hover::after {
+    width: 100%;
 }
 
 .feature-text {
@@ -583,6 +603,26 @@ body {
     margin: 0;
     text-transform: uppercase;
     letter-spacing: 1px;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.feature-highlight::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 2px;
+    background-color: rgb(93, 118, 244);
+    transition: width 0.4s ease;
+    transform-origin: left;
+}
+
+.feature-highlight:hover::after {
+    width: 100%;
 }
 
 /* MAIN FOOTER */
@@ -626,13 +666,29 @@ body {
     color: #9ca3af;
     text-decoration: none;
     font-size: 14px;
-    transition: color 0.3s, padding-left 0.3s;
     display: inline-block;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.footer-links li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 2px;
+    background-color: rgb(93, 118, 244);
+    transition: width 0.4s ease;
+    transform-origin: left;
 }
 
 .footer-links li a:hover {
-    color: #5d76f4;
-    padding-left: 5px;
+    color: rgb(93, 118, 244);
+}
+
+.footer-links li a:hover::after {
+    width: 100%;
 }
 
 /* Newsletter Column */
@@ -658,10 +714,20 @@ body {
     color: #fff;
     font-size: 14px;
     outline: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.newsletter-form input:focus {
+    background-color: #fff;
+    color: #111827;
 }
 
 .newsletter-form input::placeholder {
     color: #6b7280;
+}
+
+.newsletter-form input:focus::placeholder {
+    color: #9ca3af;
 }
 
 .newsletter-button {

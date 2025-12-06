@@ -106,22 +106,22 @@
         <!-- Left: Thumbnail Images -->
         <div class="product-thumbnails">
             <div class="thumbnail-item active">
-                <img src="https://via.placeholder.com/100x120" alt="iPhone thumbnail 1">
+                <img src="./assets/img/product-3-gallery-4-150x150.jpg" alt="iPhone thumbnail 1">
             </div>
             <div class="thumbnail-item">
-                <img src="https://via.placeholder.com/100x120" alt="iPhone thumbnail 2">
+                <img src="./assets/img/product-3-gallery-2-150x150.jpg" alt="iPhone thumbnail 2">
             </div>
             <div class="thumbnail-item">
-                <img src="https://via.placeholder.com/100x120" alt="iPhone thumbnail 3">
+                <img src="./assets/img/product-3-gallery-1-150x150.jpg" alt="iPhone thumbnail 3">
             </div>
             <div class="thumbnail-item">
-                <img src="https://via.placeholder.com/100x120" alt="iPhone thumbnail 4">
+                <img src="./assets/img/product-3-gallery-3-150x150.jpg" alt="iPhone thumbnail 4">
             </div>
         </div>
 
         <!-- Center: Main Product Image -->
         <div class="product-main-image">
-            <img src="https://via.placeholder.com/500x600" alt="Apple iPhone 6s">
+            <img src="./assets/img/h1-product-3.jpg" alt="Apple iPhone 6s">
         </div>
 
         <!-- Right: Product Information -->
@@ -191,9 +191,10 @@
 <section class="product-tabs-section">
     <div class="product-tabs-container">
         <div class="tabs-navigation">
-            <button class="tab-btn active" data-tab="description">Description</button>
-            <button class="tab-btn" data-tab="additional">Additional information</button>
-            <button class="tab-btn" data-tab="reviews">Reviews (1)</button>
+
+            <button class="tab-btn active" data-tab="description"><span>Description</span></button>
+            <button class="tab-btn" data-tab="additional"><span>Additional information</span></button>
+            <button class="tab-btn" data-tab="reviews"><span>Reviews (1)</span></button>
         </div>
 
         <div class="tabs-content">
@@ -204,12 +205,88 @@
 
             <div class="tab-pane" id="additional">
                 <h3 class="tab-title">Additional information</h3>
-                <p>Additional product information will be displayed here.</p>
+                <table class="additional-info-table">
+                    <tbody>
+                        <tr>
+                            <td class="info-label">Weight</td>
+                            <td class="info-value">1 kg</td>
+                        </tr>
+                        <tr>
+                            <td class="info-label">Dimensions</td>
+                            <td class="info-value">10 × 10 × 15 cm</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
             <div class="tab-pane" id="reviews">
-                <h3 class="tab-title">Reviews</h3>
-                <p>Customer reviews will be displayed here.</p>
+                <h3 class="reviews-main-title">1 review for Apple iPhone 6s -16/32/64/ 128GB Grey</h3>
+
+                <!-- Existing Reviews -->
+                <div class="reviews-list">
+                    <div class="review-item">
+                        <div class="review-avatar">
+                            <img src="https://i.pravatar.cc/150?img=5" alt="Olivia Schmidt">
+                        </div>
+                        <div class="review-content">
+                            <div class="review-rating">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <div class="review-header">
+                                <h4 class="reviewer-name">Olivia Schmidt</h4>
+                                <span class="review-date">10 August, 2017</span>
+                            </div>
+                            <p class="review-text">Must have!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Review Form -->
+                <div class="add-review-section">
+                    <h3 class="add-review-title">Add a review</h3>
+                    <p class="form-notice">Your email address will not be published. Required fields are marked <span class="required">*</span></p>
+
+                    <form class="review-form">
+                        <div class="form-group rating-group">
+                            <label>Your rating <span class="required">*</span></label>
+                            <div class="star-rating-input">
+                                <i class="fa-regular fa-star" data-rating="1"></i>
+                                <i class="fa-regular fa-star" data-rating="2"></i>
+                                <i class="fa-regular fa-star" data-rating="3"></i>
+                                <i class="fa-regular fa-star" data-rating="4"></i>
+                                <i class="fa-regular fa-star" data-rating="5"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Your review <span class="required">*</span></label>
+                            <textarea class="form-control" rows="6" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Name <span class="required">*</span></label>
+                            <input type="text" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email <span class="required">*</span></label>
+                            <input type="email" class="form-control" required>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox">
+                                <span>Save my name, email, and website in this browser for the next time I comment.</span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="submit-review-btn">Submit</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -467,6 +544,43 @@
                 document.getElementById(targetTab).classList.add('active');
             });
         });
+
+        // Star rating functionality
+        const stars = document.querySelectorAll('.star-rating-input i');
+        stars.forEach((star, index) => {
+            star.addEventListener('click', function() {
+                stars.forEach(s => s.classList.remove('active', 'fa-solid'));
+                stars.forEach(s => s.classList.add('fa-regular'));
+
+                for(let i = 0; i <= index; i++) {
+                    stars[i].classList.remove('fa-regular');
+                    stars[i].classList.add('fa-solid', 'active');
+                }
+            });
+
+            star.addEventListener('mouseenter', function() {
+                stars.forEach(s => s.classList.remove('fa-solid'));
+                stars.forEach(s => s.classList.add('fa-regular'));
+
+                for(let i = 0; i <= index; i++) {
+                    stars[i].classList.remove('fa-regular');
+                    stars[i].classList.add('fa-solid');
+                }
+            });
+        });
+
+        const starContainer = document.querySelector('.star-rating-input');
+        if(starContainer) {
+            starContainer.addEventListener('mouseleave', function() {
+                const activeStars = document.querySelectorAll('.star-rating-input i.active');
+                stars.forEach(s => s.classList.remove('fa-solid'));
+                stars.forEach(s => s.classList.add('fa-regular'));
+                activeStars.forEach(s => {
+                    s.classList.remove('fa-regular');
+                    s.classList.add('fa-solid');
+                });
+            });
+        }
     });
 </script>
 
