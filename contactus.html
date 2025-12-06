@@ -12,76 +12,76 @@
 </head>
 <body>
 
-<header class="header">
-    <div class="container header-container">
-        <div class="nav-left">
-            <h5>Super Deals</h5>
-            <h5>Featured Brands</h5>
-            <h5>Trending Styles</h5>
-            <h5>Gift Cards</h5>
+<header class="top-header">
+    <div class="top-header-container">
+        <div class="top-nav-left">
+            <a href="#">SUPER DEALS</a>
+            <a href="#">FEATURED BRANDS</a>
+            <a href="#">TRENDING STYLES</a>
+            <a href="#">GIFT CARDS</a>
         </div>
 
-        <div class="nav-right">
-            <div class="nav-item location">
+        <div class="top-nav-right">
+            <a href="#" class="top-nav-item">
                 <i class="fa-solid fa-location-dot"></i>
-                <h5>Store Locator</h5>
-            </div>
+                <span>STORE LOCATOR</span>
+            </a>
 
-            <div class="nav-item track-order">
+            <a href="#" class="top-nav-item">
                 <i class="fa-solid fa-gauge-simple-high"></i>
-                <h5>Track Order</h5>
-            </div>
+                <span>TRACK YOUR ORDER</span>
+            </a>
 
-            <div class="nav-item account">
+            <a href="#" class="top-nav-item">
                 <i class="fa-solid fa-user"></i>
-                <h5>Account</h5>
-            </div>
+                <span>MY ACCOUNT</span>
+            </a>
+
+            <button class="hamburger-menu" type="button">
+                <i class="fa-solid fa-bars"></i>
+            </button>
         </div>
     </div>
 </header>
 
-<section class="main-bar">
-    <div class="container main-bar-container">
-        <div class="cyberstore-left">
-            <span class="cyberstore-logo">CYBERSTORE</span>
-            <span class="cyberstore-dot"></span>
+<header class="main-header">
+    <div class="main-header-container">
+        <div class="logo-section">
+            <h1 class="logo">CYBERSTORE<span class="logo-dot">.</span></h1>
         </div>
 
-        <div class="navigation-menu">
-            <nav class="main-nav">
-                <a href="index.html">Home</a>
-                <a href="#">Pages</a>
-                <a href="#">Shop</a>
-                <a href="#">Blog</a>
-                <a href="#">Elements</a>
-            </nav>
-        </div>
+        <nav class="main-navigation">
+            <a href="index.html">Home</a>
+            <a href="#" class="active">Pages</a>
+            <a href="#">Shop</a>
+            <a href="#">Blog</a>
+            <a href="#">Elements</a>
+        </nav>
 
-        <div class="search-field-compact">
+        <div class="search-bar">
             <input type="text" placeholder="Search...">
-            <button class="search-button-compact" type="button">
+            <button class="search-btn" type="button">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
         </div>
 
-        <div class="header-icons">
-            <button class="icon-button" type="button">
+        <div class="header-actions">
+            <button class="action-btn filter-btn" type="button">
+                <i class="fa-solid fa-sliders"></i>
+            </button>
+
+            <button class="action-btn wishlist-btn" type="button">
                 <i class="fa-regular fa-heart"></i>
             </button>
 
-            <button class="icon-button" type="button">
-                <i class="fa-regular fa-user"></i>
-            </button>
-
-            <button class="cart-button" type="button">
-                <div class="cart-icon-wrapper">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span class="cart-badge">0</span>
-                </div>
+            <button class="action-btn cart-btn" type="button">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="cart-count">0</span>
+                <span class="cart-total">($0)</span>
             </button>
         </div>
     </div>
-</section>
+</header>
 
 <section class="contact-banner">
     <div class="contact-banner-content">
@@ -89,6 +89,199 @@
         <p class="breadcrumb">Home / Contact Us</p>
     </div>
 </section>
+
+<section class="contact-form-section">
+    <div class="contact-container">
+        <!-- Sol taraf: Harita + Contact Details (50%) -->
+        <div class="left-column">
+            <div class="map-wrapper">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509374!2d144.9537353153166!3d-37.81627974202171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577d6b5f5a8e0c!2sFederation%20Square!5e0!3m2!1sen!2sau!4v1614031234567!5m2!1sen!2sau"
+                    width="100%"
+                    height="350"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy">
+                </iframe>
+            </div>
+
+            <div class="contact-details-wrapper">
+                <div class="details-section">
+                    <h3>Contact Details</h3>
+                    <div class="contact-info-row">
+                        <div class="detail-item">
+                            <i class="fa-solid fa-phone"></i>
+                            <span>1-677-124-447</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>office@example.com</span>
+                        </div>
+                    </div>
+
+                    <div class="location-row">
+                        <div class="detail-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>184 Main Collins Street West Victoria 8007</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="details-two-columns">
+                    <div class="details-column">
+                        <h3>Opening Hours</h3>
+                        <p class="opening-time">Monday to Friday: 9am-9pm</p>
+                        <p class="opening-time">Saturday to Sunday: 9am-10pm</p>
+                    </div>
+
+                    <div class="details-column">
+                        <h3>Careers</h3>
+                        <p class="careers-text">If you're interested in employment<br>please email us: <a href="mailto:office@example.com">office@example.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sağ taraf: Form (50%) -->
+        <div class="right-column">
+            <div class="form-wrapper">
+                <h2>Leave Us a Message</h2>
+                <p class="form-subtitle">Your email address will not be published. Required fields are marked <span class="required">*</span></p>
+
+                <form class="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Name*</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email*</label>
+                            <input type="email" id="email" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" rows="12" placeholder="Type here..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer Top - Features -->
+<section class="footer-features">
+    <div class="footer-features-container">
+        <div class="feature-box">
+            <div class="feature-icon">
+                <i class="fa-solid fa-headset"></i>
+            </div>
+            <div class="feature-content">
+                <h4>Call Center</h4>
+                <p class="feature-number">(734) 555.1212</p>
+            </div>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon">
+                <i class="fa-solid fa-truck"></i>
+            </div>
+            <div class="feature-content">
+                <h4>Free Delivery</h4>
+                <p class="feature-text">Free delivery on the territory of USA for all amounts over $100</p>
+            </div>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon">
+                <i class="fa-solid fa-gift"></i>
+            </div>
+            <div class="feature-content">
+                <h4>Gift Cards</h4>
+                <p class="feature-highlight">SAVE UP TO 20%</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer Main -->
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3 class="footer-title">Get to Know Us</h3>
+            <ul class="footer-links">
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Our Services</a></li>
+                <li><a href="#">Stores</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Order Tracking</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3 class="footer-title">Customer Service</h3>
+            <ul class="footer-links">
+                <li><a href="#">My account</a></li>
+                <li><a href="#">Order Tracking</a></li>
+                <li><a href="#">Pricing Plans</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Our Team</a></li>
+                <li><a href="#">FAQ</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3 class="footer-title">Quick Links</h3>
+            <ul class="footer-links">
+                <li><a href="#">Smartphones</a></li>
+                <li><a href="#">Headphones</a></li>
+                <li><a href="#">Laptop & Tablet</a></li>
+                <li><a href="#">Gadgets</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column newsletter-column">
+            <h3 class="footer-title">Sign up to Newsletter</h3>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your Email Address..." required>
+                <button type="submit" class="newsletter-button">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </form>
+            <p class="newsletter-text">Stay up to date with all the actions that we are saved for all our customers.</p>
+
+            <div class="social-links">
+                <a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#" class="social-icon"><i class="fa-brands fa-pinterest-p"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Bottom - Copyright & Payment -->
+    <div class="footer-bottom">
+        <div class="footer-bottom-container">
+            <div class="copyright-text">
+                <p>© 2021 Qode Interactive, All Rights Reserved</p>
+            </div>
+            <div class="payment-logos">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" class="payment-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="MasterCard" class="payment-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" class="payment-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Western_Union_Logo_%282006%29.svg/320px-Western_Union_Logo_%282006%29.svg.png" alt="Western Union" class="payment-logo">
+            </div>
+        </div>
+    </div>
+</footer>
 
 </body>
 </html>
