@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Cyberstore</title>
+    <title>Cyberstore - Home</title>
 
     <!-- Style -->
     <link rel="stylesheet" href="./assets/css/style.css">
@@ -12,206 +12,740 @@
 </head>
 <body>
 
-<header class="header">
-    <div class="container header-container">
-        <div class="nav-left">
-            <h5>Super Deals</h5>
-            <h5>Featured Brands</h5>
-            <h5>Trending Styles</h5>
-            <h5>Gift Cards</h5>
+<!-- Top Header (Black) -->
+<header class="top-header">
+    <div class="top-header-container">
+        <div class="top-nav-left">
+            <a href="#">SUPER DEALS</a>
+            <a href="#">FEATURED BRANDS</a>
+            <a href="#">TRENDING STYLES</a>
+            <a href="#">GIFT CARDS</a>
         </div>
 
-        <div class="nav-right">
-            <div class="nav-item location">
+        <div class="top-nav-right">
+            <a href="#" class="top-nav-item">
                 <i class="fa-solid fa-location-dot"></i>
-                <h5>Store Locator</h5>
-            </div>
+                <span>STORE LOCATOR</span>
+            </a>
 
-            <div class="nav-item track-order">
+            <a href="#" class="top-nav-item">
                 <i class="fa-solid fa-gauge-simple-high"></i>
-                <h5>Track Order</h5>
-            </div>
+                <span>TRACK YOUR ORDER</span>
+            </a>
 
-            <div class="nav-item account">
+            <a href="#" class="top-nav-item">
                 <i class="fa-solid fa-user"></i>
-                <h5>Account</h5>
-            </div>
+                <span>MY ACCOUNT</span>
+            </a>
+
+            <button class="hamburger-menu" type="button">
+                <i class="fa-solid fa-bars"></i>
+            </button>
         </div>
     </div>
 </header>
 
-<section class="main-bar">
-    <div class="container main-bar-container">
-        <div class="cyberstore-left">
-            <span class="cyberstore-logo">CYBERSTORE</span>
-            <span class="cyberstore-dot"></span>
+<!-- Main Header (White) -->
+<header class="main-header">
+    <div class="main-header-container">
+        <div class="logo-section">
+            <h1 class="logo">CYBERSTORE<span class="logo-dot">.</span></h1>
         </div>
 
-        <div class="category-select">
-            <button class="category-trigger" type="button">
-                <span>All Categories</span>
-                <i class="fa-solid fa-chevron-down"></i>
-            </button>
-            <ul class="category-menu" style="visibility: hidden;">
-                <li>Audio & Sound</li>
-                <li>Smart Home</li>
-                <li>Gaming</li>
-                <li>Laptops</li>
-                <li>Desktops</li>
-                <li>Tablets</li>
-                <li>Smartphones</li>
-                <li>Drones</li>
-                <li>Wearables</li>
-                <li>Cameras</li>
-                <li>Accessories</li>
-                <li>Networking</li>
-                <li>Office Tech</li>
-                <li>Home Appliances</li>
-                <li>Monitors</li>
-                <li>Storage</li>
-                <li>VR & AR</li>
-                <li>Electric Mobility</li>
-            </ul>
+        <div class="search-section">
+            <div class="category-dropdown">
+                <button class="category-btn" type="button">
+                    <span>All Categories</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+            </div>
+
+            <div class="search-bar">
+                <input type="text" placeholder="Search for Product...">
+                <button class="search-btn" type="button">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
         </div>
 
-        <div class="search-field">
-            <input type="text" placeholder="Search for Product...">
-            <button class="search-button" type="button">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-        </div>
-
-        <div class="search-actions">
-            <button class="filter-button" type="button">
+        <div class="header-actions">
+            <button class="action-btn filter-btn" type="button">
                 <i class="fa-solid fa-sliders"></i>
                 <span>Filter</span>
             </button>
 
-            <button class="icon-button" type="button">
+            <button class="action-btn wishlist-btn" type="button">
                 <i class="fa-regular fa-heart"></i>
             </button>
 
-            <button class="cart-button" type="button">
-                <div class="cart-icon-wrapper">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span class="cart-badge">0</span>
-                </div>
-                <span class="cart-amount">(0$)</span>
+            <button class="action-btn cart-btn" type="button">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="cart-count">0</span>
+                <span class="cart-total">($0)</span>
             </button>
-
         </div>
     </div>
-</section>
+</header>
 
-<section class="departments-section">
-    <div class="container departments-container">
-        <div class="departments-left">
-            <button class="departments-trigger" type="button">
-                <i class="fa-solid fa-table-cells-large"></i>
-                <span>All Departments</span>
-                <i class="fa-solid fa-chevron-down"></i>
-            </button>
-        </div>
-        <nav class="departments-nav">
-            <a href="#">Home</a>
+<!-- Navigation Bar (Blue) -->
+<nav class="navigation-bar">
+    <div class="navigation-container">
+        <button class="all-departments-btn" type="button">
+            <i class="fa-solid fa-table-cells-large"></i>
+            <span>All Departments</span>
+        </button>
+
+        <div class="nav-links">
+            <a href="index.html" class="active">Home</a>
             <a href="#">Pages</a>
             <a href="#">Shop</a>
             <a href="#">Blog</a>
             <a href="#">Elements</a>
-            <span class="contact-label">Call us toll free: <strong>(+1)866-540-3229</strong></span>
-        </nav>
+        </div>
+
+        <div class="nav-contact">
+            <span>Call us toll free: <strong>(+1)866-540-3229</strong></span>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-container">
+        <div class="hero-content">
+            <h2 class="hero-title">MacBook Pro <span class="hero-discount">- 30% off</span></h2>
+            <p class="hero-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dol ad minim veniam, quis nostrud exercitation</p>
+        </div>
+        <div class="hero-image">
+            <img src="https://via.placeholder.com/800x500" alt="MacBook Pro">
+        </div>
+        <div class="hero-navigation">
+            <button class="hero-nav-btn prev-btn" type="button">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button class="hero-nav-btn next-btn" type="button">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
     </div>
 </section>
 
+<!-- Features Section -->
+<section class="features-section">
+    <div class="features-container">
+        <div class="feature-box">
+            <div class="feature-icon">
+                <i class="fa-solid fa-headset"></i>
+            </div>
+            <div class="feature-content">
+                <h4>Call Center</h4>
+                <a href="tel:+17345551212" class="feature-number">(734) 555.1212</a>
+            </div>
+        </div>
 
-<section class="featured-brands-section">
-    <div class="three-models">
+        <div class="feature-box">
+            <div class="feature-icon">
+                <i class="fa-solid fa-truck"></i>
+            </div>
+            <div class="feature-content">
+                <h4>Free Delivery</h4>
+                <p class="feature-text">Free delivery on the territory of USA for all amounts over $100</p>
+            </div>
+        </div>
 
+        <div class="feature-box">
+            <div class="feature-icon">
+                <i class="fa-solid fa-gift"></i>
+            </div>
+            <div class="feature-content">
+                <h4>Gift Cards</h4>
+                <a href="#" class="feature-highlight">SAVE UP TO <br> 20%</a>
+            </div>
+        </div>
     </div>
-    <div class="advantages">
-        <div class="call-center">
-            <i class="fa-solid fa-"></i>
-            <h4>Call Center</h4> <br>
-            <h4>(734) 555.1212</h4>
-        </div>
-        <div class="free-delivery">
-            <i class="fa-solid fa-"></i>
-            <h4>Free Delivery</h4>
-            <p>Free delivery on the territory of USA for all amounts over $100</p>
-        </div>
-        <div class="gift-cards">
-            <i class="fa-solid fa-"></i>
-            <h4>Gift Cards</h4>
-            <p>Save Up To 20%</p>
+</section>
+
+<!-- Featured Items Section -->
+<section class="featured-items-section">
+    <div class="featured-items-container">
+        <h2 class="section-title">Featured Items</h2>
+        <p class="section-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor <br> incididunt ut labore et dol ad minim veniam, quis nostrud exercitation</p>
+
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-item">
+                <div class="product-item-header">
+                    <div class="product-category">
+                        <a href="#">Laptop & Tablet</a>
+                    </div>
+                    <div class="product-icons">
+                        <button class="icon-btn compare-btn" type="button">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                        </button>
+                        <button class="icon-btn wishlist-btn-product" type="button">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-item-image">
+                    <img src="./assets/img/h1-product-1.jpg" alt="Apple MacBook Pro">
+                </div>
+
+                <div class="product-item-body">
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+
+                    <h3 class="product-item-title">
+                        <a href="#">Apple MacBook Pro With Touch Bar MF841DSN/A 13"</a>
+                    </h3>
+
+                    <div class="product-item-footer">
+                        <span class="product-price">$1,259</span>
+                        <button class="add-to-cart-btn" type="button">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-item">
+                <div class="product-item-header">
+                    <div class="product-category">
+                        <a href="#">Headphones</a>
+                    </div>
+                    <div class="product-icons">
+                        <button class="icon-btn compare-btn" type="button">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                        </button>
+                        <button class="icon-btn wishlist-btn-product" type="button">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-item-image">
+                    <img src="./assets/img/h2-product-10.jpg" alt="Ultra Wireless S50 Headphones">
+                </div>
+
+                <div class="product-item-body">
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+
+                    <h3 class="product-item-title">
+                        <a href="#">Ultra Wireless S50 Headphones with Bluetooth</a>
+                    </h3>
+
+                    <div class="product-item-footer">
+                        <span class="product-price">$349</span>
+                        <button class="add-to-cart-btn" type="button">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-item">
+                <div class="product-item-header">
+                    <div class="product-category">
+                        <a href="#">Phones</a>
+                    </div>
+                    <div class="product-icons">
+                        <button class="icon-btn compare-btn" type="button">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                        </button>
+                        <button class="icon-btn wishlist-btn-product" type="button">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-item-image">
+                    <img src="./assets/img/h1-product-3.jpg" alt="Apple iPhone 6s">
+                </div>
+
+                <div class="product-item-body">
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+
+                    <h3 class="product-item-title">
+                        <a href="#">Apple iPhone 6s -16/32/64/ 128GB Grey</a>
+                    </h3>
+
+                    <div class="product-item-footer">
+                        <span class="product-price">$449</span>
+                        <button class="add-to-cart-btn" type="button">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 - Out of Stock -->
+            <div class="product-item out-of-stock">
+                <div class="product-item-header">
+                    <div class="product-category">
+                        <a href="#">Gadgets</a>
+                    </div>
+                    <div class="product-icons">
+                        <button class="icon-btn compare-btn" type="button">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                        </button>
+                        <button class="icon-btn wishlist-btn-product" type="button">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-item-image">
+                    <span class="out-of-stock-badge">Out Of Stock</span>
+                    <img src="./assets/img/h1-product-2-800x600.jpg" alt="Apple Watch Sport">
+                </div>
+
+                <div class="product-item-body">
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+
+                    <h3 class="product-item-title">
+                        <a href="#">Apple Watch Sport 42mm New</a>
+                    </h3>
+
+                    <div class="product-item-footer">
+                        <span class="product-price">$349</span>
+                        <button class="add-to-cart-btn disabled" type="button" disabled>
+                            <i class="fa-solid fa-ban"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-item">
+                <div class="product-item-header">
+                    <div class="product-category">
+                        <a href="#">Laptop & Tablet</a>
+                    </div>
+                    <div class="product-icons">
+                        <button class="icon-btn compare-btn" type="button">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                        </button>
+                        <button class="icon-btn wishlist-btn-product" type="button">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-item-image">
+                    <span class="new-badge">New</span>
+                    <img src="./assets/img/h1-product-5-800x600.jpg" alt="MacBook Pro Retina Touch Bar">
+                </div>
+
+                <div class="product-item-body">
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+
+                    <h3 class="product-item-title">
+                        <a href="#">MacBook Pro Retina Touch Bar 2.9GHz Intel Core i7 16GB</a>
+                    </h3>
+
+                    <div class="product-item-footer">
+                        <div class="product-price-group">
+                            <span class="product-price-old">$1,599</span>
+                            <span class="product-price">$1,299</span>
+                        </div>
+                        <button class="add-to-cart-btn" type="button">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-item">
+                <div class="product-item-header">
+                    <div class="product-category">
+                        <a href="#">Laptop & Tablet</a>
+                    </div>
+                    <div class="product-icons">
+                        <button class="icon-btn compare-btn" type="button">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                        </button>
+                        <button class="icon-btn wishlist-btn-product" type="button">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-item-image">
+                    <span class="new-badge">New</span>
+                    <img src="./assets/img/h1-product-6-800x600.jpg" alt="MacBook Rose Gold">
+                </div>
+
+                <div class="product-item-body">
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+
+                    <h3 class="product-item-title">
+                        <a href="#">MacBook Rose Gold 1.2GHz 256GB butterfly mechanism</a>
+                    </h3>
+
+                    <div class="product-item-footer">
+                        <span class="product-price">$1,299</span>
+                        <button class="add-to-cart-btn" type="button">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 7 - Out of Stock -->
+            <div class="product-item out-of-stock">
+                <div class="product-item-header">
+                    <div class="product-category">
+                        <a href="#">Home Appliances</a>
+                    </div>
+                    <div class="product-icons">
+                        <button class="icon-btn compare-btn" type="button">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                        </button>
+                        <button class="icon-btn wishlist-btn-product" type="button">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-item-image">
+                    <span class="out-of-stock-badge">Out Of Stock</span>
+                    <img src="./assets/img/h1-product-7-800x600.jpg" alt="TCL 32S305">
+                </div>
+
+                <div class="product-item-body">
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+
+                    <h3 class="product-item-title">
+                        <a href="#">TCL 32S305 32-Inch 720p Roku Smart LED TV</a>
+                    </h3>
+
+                    <div class="product-item-footer">
+                        <span class="product-price">$675</span>
+                        <button class="add-to-cart-btn disabled" type="button" disabled>
+                            <i class="fa-solid fa-ban"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="product-item">
+                <div class="product-item-header">
+                    <div class="product-category">
+                        <a href="#">Phones</a>
+                    </div>
+                    <div class="product-icons">
+                        <button class="icon-btn compare-btn" type="button">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                        </button>
+                        <button class="icon-btn wishlist-btn-product" type="button">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-item-image">
+                    <img src="./assets/img/h1-product-8-800x600.jpg " alt="Apple iPhone 7">
+                </div>
+
+                <div class="product-item-body">
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+
+                    <h3 class="product-item-title">
+                        <a href="#">Apple iPhone 7 4.7-Inch Silver 128GB Contact-Free</a>
+                    </h3>
+
+                    <div class="product-item-footer">
+                        <span class="product-price">$749</span>
+                        <button class="add-to-cart-btn" type="button">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
-<section class="featured-brands-section">
-    <div class="featured-brands-container">
-        <h2>Featured Brands</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dol
-            ad minim veniam, quis nostrud exercitation</p>
+<!-- Products Lists Section -->
+<section class="products-lists-section">
+    <div class="products-lists-container">
+        <!-- Hot New Releases -->
+        <div class="product-list-column">
+            <h3 class="product-list-title">Hot New Releases</h3>
+
+            <div class="product-list-item">
+                <div class="product-list-image">
+                    <img src="./assets/img/virtual-product-1.jpg" alt="Apple VIP Membership">
+                </div>
+                <div class="product-list-content">
+                    <h4><a href="#">Apple VIP Membership</a></h4>
+                    <div class="product-list-prices">
+                        <span class="list-price-old">$599</span>
+                        <span class="list-price">$259</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-list-item">
+                <div class="product-list-image">
+                    <img src="./assets/img/h1-product-9.jpg" alt="Apple iPad">
+                </div>
+                <div class="product-list-content">
+                    <h4><a href="#">Apple iPad 9.7 128GB WiFi</a></h4>
+                    <div class="product-list-prices">
+                        <span class="list-price-old">$1,199</span>
+                        <span class="list-price">$999</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-list-item">
+                <div class="product-list-image">
+                    <img src="./assets/img/h1-product-1.jpg" alt="Apple MacBook Pro">
+                </div>
+                <div class="product-list-content">
+                    <h4><a href="#">Apple MacBook Pro</a></h4>
+                    <div class="product-list-prices">
+                        <span class="list-price-old">$1,259</span>
+                        <span class="list-price">$999</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Selling Products -->
+        <div class="product-list-column">
+            <h3 class="product-list-title">Top Selling Products</h3>
+
+            <div class="product-list-item">
+                <div class="product-list-image">
+                    <img src="./assets/img/h1-product-1.jpg" alt="Apple MacBook Pro">
+                </div>
+                <div class="product-list-content">
+                    <h4><a href="#">Apple MacBook Pro With Touch Bar MF841DSN/A 13"</a></h4>
+                    <div class="product-list-prices">
+                        <span class="list-price">$1,259</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-list-item">
+                <div class="product-list-image">
+                    <img src="./assets/img/h2-product-10.jpg" alt="Ultra Wireless S50">
+                </div>
+                <div class="product-list-content">
+                    <h4><a href="#">Ultra Wireless S50 Headphones with Bluetooth</a></h4>
+                    <div class="product-list-prices">
+                        <span class="list-price">$349</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-list-item">
+                <div class="product-list-image">
+                    <img src="./assets/img/h1-product-3.jpg" alt="Apple iPhone 6s">
+                </div>
+                <div class="product-list-content">
+                    <h4><a href="#">Apple iPhone 6s -16/32/64/ 128GB Grey</a></h4>
+                    <div class="product-list-prices">
+                        <span class="list-price">$449</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Featured Products -->
+        <div class="product-list-column">
+            <h3 class="product-list-title">Featured Products</h3>
+
+            <div class="product-list-item">
+                <div class="product-list-image">
+                    <img src="./assets/img/h1-masonry-product-2.jpg" alt="Apple iPhone 6">
+                </div>
+                <div class="product-list-content">
+                    <h4><a href="#">Apple iPhone 6 4.7-Inch Black 128GB</a></h4>
+                    <div class="product-list-prices">
+                        <span class="list-price">$399</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-list-item">
+                <div class="product-list-image">
+                    <img src="./assets/img/h2-product-8.jpg" alt="ES62-T Steam Iron">
+                </div>
+                <div class="product-list-content">
+                    <h4><a href="#">ES62-T Steam Iron with Nonstick Soleplate</a></h4>
+                    <div class="product-list-prices">
+                        <span class="list-price">$59</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-list-item">
+                <div class="product-list-image">
+                    <img src="./assets/img/h1-product-3.jpg" alt="Apple iPhone 5s">
+                </div>
+                <div class="product-list-content">
+                    <h4><a href="#">Apple iPhone 5s 4.7-Inch White Silver 16GB</a></h4>
+                    <div class="product-list-prices">
+                        <span class="list-price">$419</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
-<section class="info-boxes container">
-    <div class="box">
-        <i class="fa-regular fa-user"></i>
-        <div>
-            <h4>Call Center</h4>
-            <p>(734) 555.1212</p>
-        </div>
-    </div>
 
+<!-- Favorite Brands Section -->
+<section class="favorite-brands-section">
+    <div class="favorite-brands-container">
+        <h2 class="brands-title">Shop by Your <strong>Favorite Brand</strong></h2>
 
-    <div class="box">
-        <i class="fa-solid fa-cart-shopping"></i>
-        <div>
-            <h4>Free Delivery</h4>
-            <p>Free delivery on USA orders $100+</p>
-        </div>
-    </div>
-
-
-    <div class="box">
-        <i class="fa-regular fa-credit-card"></i>
-        <div>
-            <h4>Gift Cards</h4>
-            <p>SAVE UP TO 20%</p>
-        </div>
-    </div>
-</section>
-<section class="featured container">
-    <h2>Featured Items</h2>
-    <p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
-
-    <div class="products">
-        <div class="product">
-            <img src="https://via.placeholder.com/250x200" alt="Laptop">
-            <h5>Laptop & Tablet</h5>
-        </div>
-
-
-        <div class="product">
-            <img src="https://via.placeholder.com/250x200" alt="Headphones">
-            <h5>Headphones</h5>
-        </div>
-
-
-        <div class="product">
-            <img src="https://via.placeholder.com/250x200" alt="Phone">
-            <h5>Phones</h5>
-        </div>
-
-
-        <div class="product out">
-            <img src="https://via.placeholder.com/250x200" alt="Watch">
-            <span class="out-text">Out Of Stock</span>
-            <h5>Gadgets</h5>
+        <div class="brands-logos">
+            <div class="brand-logo">
+                <img src="https://cdn.freebiesupply.com/logos/large/2x/bosch-1-logo-png-transparent.png" alt="Bosch">
+            </div>
+            <div class="brand-logo">
+                <img src="https://1000logos.net/wp-content/uploads/2020/08/Samsonite-Logo.png" alt="Samsonite">
+            </div>
+            <div class="brand-logo">
+                <img src="https://1000logos.net/wp-content/uploads/2017/02/iPhone-Logo-2007.png" alt="Apple">
+            </div>
+            <div class="brand-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/LG_Electronics_logo.png" alt="LG Electronics">
+            </div>
+            <div class="brand-logo">
+                <img src="https://images.samsung.com/is/image/samsung/assets/global/about-us/brand/logo/mo/360_197_1.png?$720_N_PNG$" alt="Samsung Mobile">
+            </div>
         </div>
     </div>
 </section>
+
+<!-- Footer Main -->
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3 class="footer-title">Get to Know Us</h3>
+            <ul class="footer-links">
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Our Services</a></li>
+                <li><a href="#">Stores</a></li>
+                <li><a href="contactus.html">Contact Us</a></li>
+                <li><a href="#">Order Tracking</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3 class="footer-title">Customer Service</h3>
+            <ul class="footer-links">
+                <li><a href="#">My account</a></li>
+                <li><a href="#">Order Tracking</a></li>
+                <li><a href="#">Pricing Plans</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Our Team</a></li>
+                <li><a href="#">FAQ</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3 class="footer-title">Quick Links</h3>
+            <ul class="footer-links">
+                <li><a href="#">Smartphones</a></li>
+                <li><a href="#">Headphones</a></li>
+                <li><a href="#">Laptop & Tablet</a></li>
+                <li><a href="#">Gadgets</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column newsletter-column">
+            <h3 class="footer-title">Sign up to Newsletter</h3>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your Email Address..." required>
+                <button type="submit" class="newsletter-button">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </form>
+            <p class="newsletter-text">Stay up to date with all the actions that we are saved for all our customers.</p>
+
+            <div class="social-links">
+                <a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#" class="social-icon"><i class="fa-brands fa-pinterest-p"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Bottom - Copyright & Payment -->
+    <div class="footer-bottom">
+        <div class="footer-bottom-container">
+            <div class="copyright-text">
+                <p>© 2021 Qode Interactive, All Rights Reserved</p>
+            </div>
+            <div class="payment-logos">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" class="payment-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="MasterCard" class="payment-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" class="payment-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Western_Union_logo.svg/2560px-Western_Union_logo.svg.png" alt="Western Union" class="payment-logo">
+            </div>
+        </div>
+    </div>
+</footer>
+
 <script src="./assets/js/script.js"></script>
 </body>
 </html>
