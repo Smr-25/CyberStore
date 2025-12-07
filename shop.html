@@ -2,7 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Product - Cyberstore</title>
+    <title>Shop - Cyberstore</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Style -->
     <link rel="stylesheet" href="./assets/css/style3.css">
@@ -47,7 +52,9 @@
 <header class="main-header">
     <div class="main-header-container">
         <div class="logo-section">
-            <h1 class="logo">CYBERSTORE<span class="logo-dot">.</span></h1>
+            <a href="index.html" style="text-decoration: none; color: inherit;">
+                <h1 class="logo">CYBERSTORE<span class="logo-dot">.</span></h1>
+            </a>
         </div>
 
         <nav class="main-navigation">
@@ -70,15 +77,15 @@
                 <i class="fa-solid fa-sliders"></i>
             </button>
 
-            <button class="action-btn wishlist-btn" type="button">
+            <a href="wishlist.html" class="action-btn wishlist-btn">
                 <i class="fa-regular fa-heart"></i>
-            </button>
+            </a>
 
-            <button class="action-btn cart-btn" type="button">
+            <a href="cart.html" class="action-btn cart-btn">
                 <i class="fa-solid fa-cart-shopping"></i>
                 <span class="cart-count">0</span>
                 <span class="cart-total">($0)</span>
-            </button>
+            </a>
         </div>
     </div>
 </header>
@@ -456,7 +463,7 @@
                 <li><a href="#">About us</a></li>
                 <li><a href="#">Our Services</a></li>
                 <li><a href="#">Stores</a></li>
-                <li><a href="#">Contact Us</a></li>
+                <li><a href="contactus.html">Contact Us</a></li>
                 <li><a href="#">Order Tracking</a></li>
             </ul>
         </div>
@@ -494,11 +501,11 @@
             <p class="newsletter-text">Stay up to date with all the actions that we are saved for all our customers.</p>
 
             <div class="social-links">
-                <a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" class="social-icon"><i class="fa-brands fa-twitter"></i></a>
-                <a href="#" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="#" class="social-icon"><i class="fa-brands fa-pinterest-p"></i></a>
+                <a href="https://www.facebook.com/QodeInteractive/" target="_blank" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/qodeinteractive/" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://x.com/QodeInteractive" target="_blank" class="social-icon"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/company/qode-interactive/" target="_blank" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://www.pinterest.com/qodeinteractive/" target="_blank" class="social-icon"><i class="fa-brands fa-pinterest-p"></i></a>
             </div>
         </div>
     </div>
@@ -524,6 +531,20 @@
 </footer>
 
 <script>
+    // Global variables
+    let selectedRating = 0;
+    let reviewsData = JSON.parse(localStorage.getItem('productReviews')) || [
+        {
+            id: 1,
+            name: 'Olivia Schmidt',
+            email: 'olivia@example.com',
+            rating: 5,
+            review: 'Must have!',
+            date: '10 August, 2017',
+            avatar: 'https://i.pravatar.cc/150?img=5'
+        }
+    ];
+
     // Tab functionality
     document.addEventListener('DOMContentLoaded', function() {
         const tabButtons = document.querySelectorAll('.tab-btn');
@@ -545,17 +566,25 @@
             });
         });
 
-        // Star rating functionality
+        // Initialize all functionality
+        initStarRating();
+        initQuantityControls();
+        initAddToCart();
+        initWishlistButtons();
+        initReviewForm();
+        updateWishlistCount();
+        updateCartDisplay();
+        displayReviews();
+    });
+
+    // Star Rating Functionality
+    function initStarRating() {
         const stars = document.querySelectorAll('.star-rating-input i');
+
         stars.forEach((star, index) => {
             star.addEventListener('click', function() {
-                stars.forEach(s => s.classList.remove('active', 'fa-solid'));
-                stars.forEach(s => s.classList.add('fa-regular'));
-
-                for(let i = 0; i <= index; i++) {
-                    stars[i].classList.remove('fa-regular');
-                    stars[i].classList.add('fa-solid', 'active');
-                }
+                selectedRating = index + 1;
+                updateStarDisplay(index);
             });
 
             star.addEventListener('mouseenter', function() {
@@ -572,16 +601,419 @@
         const starContainer = document.querySelector('.star-rating-input');
         if(starContainer) {
             starContainer.addEventListener('mouseleave', function() {
-                const activeStars = document.querySelectorAll('.star-rating-input i.active');
-                stars.forEach(s => s.classList.remove('fa-solid'));
-                stars.forEach(s => s.classList.add('fa-regular'));
-                activeStars.forEach(s => {
-                    s.classList.remove('fa-regular');
-                    s.classList.add('fa-solid');
+                stars.forEach((s, idx) => {
+                    if (idx < selectedRating) {
+                        s.classList.remove('fa-regular');
+                        s.classList.add('fa-solid');
+                    } else {
+                        s.classList.remove('fa-solid');
+                        s.classList.add('fa-regular');
+                    }
                 });
             });
         }
-    });
+    }
+
+    function updateStarDisplay(selectedIndex) {
+        const stars = document.querySelectorAll('.star-rating-input i');
+        stars.forEach((s, idx) => {
+            if (idx <= selectedIndex) {
+                s.classList.remove('fa-regular');
+                s.classList.add('fa-solid', 'active');
+            } else {
+                s.classList.remove('fa-solid', 'active');
+                s.classList.add('fa-regular');
+            }
+        });
+    }
+
+    // Quantity Controls
+    function initQuantityControls() {
+        const minusBtn = document.querySelector('.qty-btn.minus');
+        const plusBtn = document.querySelector('.qty-btn.plus');
+        const qtyInput = document.querySelector('.qty-input');
+
+        if (minusBtn && plusBtn && qtyInput) {
+            minusBtn.addEventListener('click', function() {
+                let currentValue = parseInt(qtyInput.value) || 1;
+                if (currentValue > 1) {
+                    qtyInput.value = currentValue - 1;
+                }
+            });
+
+            plusBtn.addEventListener('click', function() {
+                let currentValue = parseInt(qtyInput.value) || 1;
+                const maxStock = 11; // Based on stock info
+                if (currentValue < maxStock) {
+                    qtyInput.value = currentValue + 1;
+                } else {
+                    showNotification('⚠️ Maximum stock reached!', 'warning');
+                }
+            });
+
+            // Prevent negative values
+            qtyInput.addEventListener('input', function() {
+                let value = parseInt(this.value);
+                if (isNaN(value) || value < 1) {
+                    this.value = 1;
+                } else if (value > 11) {
+                    this.value = 11;
+                    showNotification('⚠️ Maximum stock is 11 items!', 'warning');
+                }
+            });
+        }
+    }
+
+    // Add to Cart Functionality
+    function initAddToCart() {
+        const addToCartBtn = document.querySelector('.product-actions .add-to-cart-btn');
+
+        if (addToCartBtn) {
+            addToCartBtn.addEventListener('click', function() {
+                const qtyInput = document.querySelector('.qty-input');
+                const quantity = parseInt(qtyInput?.value) || 1;
+                const productTitle = document.querySelector('.product-title')?.textContent || 'Apple iPhone 6s';
+                const productPrice = document.querySelector('.product-price')?.textContent || '$449';
+                const productImage = document.querySelector('.product-main-image img')?.src || '';
+
+                const product = {
+                    id: 'iphone-6s',
+                    title: productTitle.trim(),
+                    price: productPrice.trim(),
+                    image: productImage,
+                    quantity: quantity
+                };
+
+                addToCart(product);
+            });
+        }
+
+        // Related products add to cart
+        const relatedCartBtns = document.querySelectorAll('.add-to-cart-icon');
+        relatedCartBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const productCard = this.closest('.product-card');
+                const productName = productCard.querySelector('.product-name a')?.textContent || 'Product';
+                const productPrice = productCard.querySelector('.price')?.textContent || '$0';
+                const productImage = productCard.querySelector('.product-image-wrapper img')?.src || '';
+
+                const product = {
+                    id: Date.now(),
+                    title: productName.trim(),
+                    price: productPrice.trim(),
+                    image: productImage,
+                    quantity: 1
+                };
+
+                addToCart(product);
+            });
+        });
+    }
+
+    function addToCart(product) {
+        let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+        const existingItem = cartItems.find(item => item.id === product.id || item.title === product.title);
+
+        if (existingItem) {
+            existingItem.quantity += product.quantity;
+            showNotification(`✅ Updated ${product.title} quantity in cart!`, 'success');
+        } else {
+            cartItems.push(product);
+            showNotification(`✅ ${product.title} added to cart!`, 'success');
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+        updateCartDisplay();
+    }
+
+    // Wishlist Functionality
+    function initWishlistButtons() {
+        // Main product wishlist button
+        const mainWishlistBtn = document.querySelector('.wishlist-action');
+        if (mainWishlistBtn) {
+            mainWishlistBtn.addEventListener('click', function() {
+                const productTitle = document.querySelector('.product-title')?.textContent || 'Apple iPhone 6s';
+                const productPrice = document.querySelector('.product-price')?.textContent || '$449';
+                const productImage = document.querySelector('.product-main-image img')?.src || '';
+
+                const product = {
+                    id: 'iphone-6s',
+                    title: productTitle.trim(),
+                    price: productPrice.trim(),
+                    image: productImage
+                };
+
+                addToWishlist(product);
+            });
+        }
+
+        // Related products wishlist buttons
+        const wishlistBtns = document.querySelectorAll('.wishlist-icon');
+        wishlistBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const productCard = this.closest('.product-card');
+                const productName = productCard.querySelector('.product-name a')?.textContent || 'Product';
+                const productPrice = productCard.querySelector('.price')?.textContent || '$0';
+                const productImage = productCard.querySelector('.product-image-wrapper img')?.src || '';
+
+                const product = {
+                    id: Date.now(),
+                    title: productName.trim(),
+                    price: productPrice.trim(),
+                    image: productImage
+                };
+
+                addToWishlist(product);
+            });
+        });
+    }
+
+    function addToWishlist(product) {
+        let wishlistItems = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+        const exists = wishlistItems.some(item => item.id === product.id || item.title === product.title);
+
+        if (exists) {
+            showNotification('ℹ️ This product is already in your wishlist!', 'info');
+            return;
+        }
+
+        wishlistItems.push(product);
+        localStorage.setItem('wishlist', JSON.stringify(wishlistItems));
+        updateWishlistCount();
+        showNotification(`❤️ ${product.title} added to wishlist!`, 'success');
+    }
+
+    // Review Form Functionality
+    function initReviewForm() {
+        const reviewForm = document.querySelector('.review-form');
+
+        if (reviewForm) {
+            reviewForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                if (selectedRating === 0) {
+                    showNotification('⚠️ Please select a rating!', 'warning');
+                    return;
+                }
+
+                const name = this.querySelector('input[type="text"]').value.trim();
+                const email = this.querySelector('input[type="email"]').value.trim();
+                const reviewText = this.querySelector('textarea').value.trim();
+
+                if (!name || !email || !reviewText) {
+                    showNotification('⚠️ Please fill all required fields!', 'warning');
+                    return;
+                }
+
+                const newReview = {
+                    id: Date.now(),
+                    name: name,
+                    email: email,
+                    rating: selectedRating,
+                    review: reviewText,
+                    date: new Date().toLocaleDateString('en-US', {
+                        day: 'numeric',
+                        month: 'long',
+                        year: 'numeric'
+                    }),
+                    avatar: `https://i.pravatar.cc/150?img=${Math.floor(Math.random() * 70)}`
+                };
+
+                reviewsData.push(newReview);
+                localStorage.setItem('productReviews', JSON.stringify(reviewsData));
+
+                // Reset form
+                this.reset();
+                selectedRating = 0;
+                const stars = document.querySelectorAll('.star-rating-input i');
+                stars.forEach(s => {
+                    s.classList.remove('fa-solid', 'active');
+                    s.classList.add('fa-regular');
+                });
+
+                // Update display
+                displayReviews();
+                updateReviewsCount();
+
+                showNotification('✅ Review submitted successfully!', 'success');
+
+                // Scroll to reviews
+                setTimeout(() => {
+                    document.querySelector('.reviews-list').scrollIntoView({ behavior: 'smooth' });
+                }, 300);
+            });
+        }
+    }
+
+    // Display Reviews
+    function displayReviews() {
+        const reviewsList = document.querySelector('.reviews-list');
+
+        if (reviewsList && reviewsData.length > 0) {
+            reviewsList.innerHTML = reviewsData.map(review => `
+                <div class="review-item">
+                    <div class="review-avatar">
+                        <img src="${review.avatar}" alt="${review.name}">
+                    </div>
+                    <div class="review-content">
+                        <div class="review-rating">
+                            ${generateStarHTML(review.rating)}
+                        </div>
+                        <div class="review-header">
+                            <h4 class="reviewer-name">${review.name}</h4>
+                            <span class="review-date">${review.date}</span>
+                        </div>
+                        <p class="review-text">${review.review}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+    }
+
+    function generateStarHTML(rating) {
+        let stars = '';
+        for (let i = 1; i <= 5; i++) {
+            if (i <= rating) {
+                stars += '<i class="fa-solid fa-star"></i>';
+            } else {
+                stars += '<i class="fa-regular fa-star"></i>';
+            }
+        }
+        return stars;
+    }
+
+    function updateReviewsCount() {
+        const reviewsTab = document.querySelector('.tab-btn[data-tab="reviews"] span');
+        const reviewsTitle = document.querySelector('.reviews-main-title');
+
+        if (reviewsTab) {
+            reviewsTab.textContent = `Reviews (${reviewsData.length})`;
+        }
+
+        if (reviewsTitle) {
+            reviewsTitle.textContent = `${reviewsData.length} review${reviewsData.length !== 1 ? 's' : ''} for Apple iPhone 6s -16/32/64/ 128GB Grey`;
+        }
+    }
+
+    // Update Wishlist Count
+    function updateWishlistCount() {
+        const wishlistItems = JSON.parse(localStorage.getItem('wishlist')) || [];
+        const wishlistBtn = document.querySelector('.wishlist-btn');
+
+        if (wishlistBtn) {
+            let countBadge = wishlistBtn.querySelector('.wishlist-count');
+
+            if (!countBadge && wishlistItems.length > 0) {
+                countBadge = document.createElement('span');
+                countBadge.className = 'wishlist-count';
+                wishlistBtn.appendChild(countBadge);
+            }
+
+            if (countBadge) {
+                if (wishlistItems.length > 0) {
+                    countBadge.textContent = wishlistItems.length;
+                    countBadge.style.cssText = 'position: absolute; top: -5px; right: -5px; background-color: rgb(93, 118, 244); color: white; border-radius: 50%; width: 18px; height: 18px; font-size: 11px; display: flex; align-items: center; justify-content: center; font-weight: bold;';
+                } else {
+                    countBadge.remove();
+                }
+            }
+        }
+    }
+
+    // Update Cart Display
+    function updateCartDisplay() {
+        const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartBtn = document.querySelector('.cart-btn');
+        const cartCount = cartBtn?.querySelector('.cart-count');
+        const cartTotal = cartBtn?.querySelector('.cart-total');
+
+        if (cartCount) {
+            const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+        }
+
+        if (cartTotal) {
+            const total = cartItems.reduce((sum, item) => {
+                const price = parseFloat(item.price.replace(/[^0-9.]/g, '')) || 0;
+                return sum + (price * item.quantity);
+            }, 0);
+
+            cartTotal.textContent = `($${total.toFixed(2)})`;
+        }
+    }
+
+    // Notification System
+    function showNotification(message, type = 'success') {
+        // Remove existing notification if any
+        const existingNotification = document.querySelector('.custom-notification');
+        if (existingNotification) {
+            existingNotification.remove();
+        }
+
+        const notification = document.createElement('div');
+        notification.className = `custom-notification notification-${type}`;
+
+        const colors = {
+            success: 'rgb(93, 118, 244)',
+            warning: '#f59e0b',
+            error: '#ef4444',
+            info: '#3b82f6'
+        };
+
+        notification.style.cssText = `
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            padding: 15px 25px;
+            background-color: ${colors[type] || colors.success};
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            z-index: 10000;
+            font-size: 14px;
+            font-weight: 500;
+            animation: slideInRight 0.3s ease;
+            max-width: 350px;
+        `;
+
+        notification.textContent = message;
+        document.body.appendChild(notification);
+
+        setTimeout(() => {
+            notification.style.animation = 'slideOutRight 0.3s ease';
+            setTimeout(() => notification.remove(), 300);
+        }, 3000);
+    }
+
+    // Add CSS animations
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideInRight {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOutRight {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
 </script>
 
 </body>

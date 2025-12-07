@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Contact Us - Cyberstore</title>
+    <title>Wishlist - Cyberstore</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,6 +11,7 @@
 
     <!-- Style -->
     <link rel="stylesheet" href="./assets/css/style2.css">
+    <link rel="stylesheet" href="./assets/css/style4.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
@@ -92,93 +93,21 @@
 
 <section class="contact-banner">
     <div class="contact-banner-content">
-        <h1>CONTACT US</h1>
-        <p class="breadcrumb">Home / Contact Us</p>
+        <h1>WISHLIST</h1>
+        <p class="breadcrumb">Home / Wishlist</p>
     </div>
 </section>
 
-<section class="contact-form-section">
-    <div class="contact-container">
-        <!-- Sol taraf: Harita + Contact Details (50%) -->
-        <div class="left-column">
-            <div class="map-wrapper">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509374!2d144.9537353153166!3d-37.81627974202171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577d6b5f5a8e0c!2sFederation%20Square!5e0!3m2!1sen!2sau!4v1614031234567!5m2!1sen!2sau"
-                    width="100%"
-                    height="350"
-                    style="border:0;"
-                    allowfullscreen=""
-                    loading="lazy">
-                </iframe>
-            </div>
-
-            <div class="contact-details-wrapper">
-                <div class="details-section">
-                    <h3>Contact Details</h3>
-                    <div class="contact-info-row">
-                        <div class="detail-item">
-                            <i class="fa-solid fa-phone"></i>
-                            <a href="tel:+1677124447">1-677-124-447</a>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fa-solid fa-envelope"></i>
-                            <a href="mailto:office@example.com">office@example.com</a>
-                        </div>
-                    </div>
-
-                    <div class="location-row">
-                        <div class="detail-item">
-                            <i class="fa-solid fa-location-dot"></i>
-                            <span>184 Main Collins Street West Victoria 8007</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="details-two-columns">
-                    <div class="details-column">
-                        <h3>Opening Hours</h3>
-                        <p class="opening-time">Monday to Friday: 9am-9pm</p>
-                        <p class="opening-time">Saturday to Sunday: 9am-10pm</p>
-                    </div>
-
-                    <div class="details-column">
-                        <h3>Careers</h3>
-                        <p class="careers-text">If you're interested in employment<br>please email us: <a href="mailto:office@example.com">office@example.com</a></p>
-                    </div>
-                </div>
-            </div>
+<!-- Wishlist Page Section -->
+<section class="wishlist-page-section">
+    <div class="wishlist-page-container">
+        <div class="wishlist-page-header">
+            <h1>My Wishlist</h1>
+            <p class="wishlist-count-text">0 items in wishlist</p>
         </div>
 
-        <!-- Sağ taraf: Form (50%) -->
-        <div class="right-column">
-            <div class="form-wrapper">
-                <h2>Leave Us a Message</h2>
-                <p class="form-subtitle">Your email address will not be published. Required fields are marked <span class="required">*</span></p>
-
-                <form class="contact-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">Name*</label>
-                            <input type="text" id="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email*</label>
-                            <input type="email" id="email" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject">
-                    </div>
-
-                    <div class="form-group full-width">
-                        <label for="message">Your Message</label>
-                        <textarea id="message" rows="12" placeholder="Type here..."></textarea>
-                    </div>
-
-                    <button type="submit" class="submit-button">Send Message</button>
-                </form>
-            </div>
+        <div class="wishlist-items-container">
+            <!-- Wishlist items will be loaded here by JavaScript -->
         </div>
     </div>
 </section>
@@ -290,6 +219,7 @@
     </div>
 </footer>
 
-<script src="./assets/js/script2.js"></script>
+<script src="./assets/js/script4.js"></script>
 </body>
 </html>
+
