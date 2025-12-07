@@ -1,6 +1,112 @@
 // Contact Us Page JavaScript
 
-// Enhanced Form Validation
+// ============================================
+// MOBILE NAVIGATION & HAMBURGER MENU
+// ============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Hamburger Menu Toggle
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    const mainNavigation = document.querySelector('.main-navigation');
+    const body = document.body;
+
+    // Create mobile overlay if doesn't exist
+    let mobileOverlay = document.querySelector('.mobile-nav-overlay');
+    if (!mobileOverlay && hamburgerMenu) {
+        mobileOverlay = document.createElement('div');
+        mobileOverlay.className = 'mobile-nav-overlay';
+        body.appendChild(mobileOverlay);
+    }
+
+    // Toggle mobile menu
+    if (hamburgerMenu) {
+        hamburgerMenu.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleMobileMenu();
+        });
+    }
+
+    // Close menu when clicking overlay
+    if (mobileOverlay) {
+        mobileOverlay.addEventListener('click', function() {
+            closeMobileMenu();
+        });
+    }
+
+    // Close menu when clicking navigation link
+    if (mainNavigation) {
+        const navLinks = mainNavigation.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                closeMobileMenu();
+            });
+        });
+    }
+
+    // Close menu on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeMobileMenu();
+        }
+    });
+
+    function toggleMobileMenu() {
+        if (mainNavigation && mobileOverlay) {
+            const isActive = mainNavigation.classList.contains('active');
+
+            if (isActive) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        }
+    }
+
+    function openMobileMenu() {
+        mainNavigation.classList.add('active');
+        mobileOverlay.classList.add('active');
+        body.classList.add('menu-open');
+        hamburgerMenu.innerHTML = '<i class="fas fa-times"></i>';
+    }
+
+    function closeMobileMenu() {
+        mainNavigation.classList.remove('active');
+        mobileOverlay.classList.remove('active');
+        body.classList.remove('menu-open');
+        hamburgerMenu.innerHTML = '<i class="fas fa-bars"></i>';
+    }
+
+    // Handle window resize - close menu if resized to desktop
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            if (window.innerWidth > 768) {
+                closeMobileMenu();
+            }
+        }, 250);
+    });
+});
+
+// ============================================
+// STICKY HEADER ON SCROLL
+// ============================================
+
+window.addEventListener('scroll', function() {
+    const mainHeader = document.querySelector('.main-header');
+    if (mainHeader) {
+        if (window.scrollY > 100) {
+            mainHeader.classList.add('scrolled');
+        } else {
+            mainHeader.classList.remove('scrolled');
+        }
+    }
+});
+
+// ============================================
+// ENHANCED FORM VALIDATION
+// ============================================
+
 document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.querySelector('.contact-form');
 
@@ -243,8 +349,7 @@ function updateCartDisplay() {
     const cartTotal = cartBtn?.querySelector('.cart-total');
 
     if (cartCount) {
-        const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
-        cartCount.textContent = totalItems;
+        cartCount.textContent = cartItems.reduce((sum, item) => sum + item.quantity, 0);
     }
 
     if (cartTotal) {
@@ -262,7 +367,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const cartBtn = document.querySelector('.cart-btn');
 
     if (cartBtn) {
-        cartBtn.addEventListener('click', function(e) {
+        cartBtn.addEventListener('click', function() {
             if (cartItems.length === 0) {
                 alert('Your cart is empty!');
                 return;
