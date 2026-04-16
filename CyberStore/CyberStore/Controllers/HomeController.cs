@@ -1,24 +1,35 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using CyberStore.Models;
-
+using CyberStore.Services.Interfaces;
 namespace CyberStore.Controllers;
-
 public class HomeController : Controller
 {
-    public IActionResult Index()
+    private readonly IProductService _productService;
+    private readonly IContactService _contactService;
+    public HomeController(IProductService productService, IContactService contactService)
     {
-        return View();
+        _productService = productService;
+        _contactService = contactService;
     }
-
-    public IActionResult Privacy()
+    public async Task<IActionResult> Index()
     {
-        return View();
+        var products = await _productService.GetAllProductsAsync();
+        return View(products);
     }
-
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
+    public IActionResult Contact()
     {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        return View(new ContactMessage());
+    }
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> SubmitContact(ContactMessage model)
+    {
+        if (ModelState.IsValid)
+        {
+            await _contactService.SubmitMessageAsync(model);
+            TempData["SuccessMessage"] = "Your message has been sent successfully.";
+            return RedirectToAction(nameof(Contact));
+        }
+        return View("Contact", model);
     }
 }
