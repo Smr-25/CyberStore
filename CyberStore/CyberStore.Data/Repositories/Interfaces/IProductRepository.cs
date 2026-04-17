@@ -1,6 +1,6 @@
-using CyberStore.Models;
+using CyberStore.Core.Entities;
 
-namespace CyberStore.Repositories.Interfaces;
+namespace CyberStore.Data.Repositories.Interfaces;
 
 public interface IProductRepository : IGenericRepository<Product>
 {

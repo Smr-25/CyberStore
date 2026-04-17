@@ -86,4 +86,10 @@
       </PackageReference>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\CyberStore.Application\CyberStore.Application.csproj" />
+      <ProjectReference Include="..\CyberStore.Data\CyberStore.Data.csproj" />
+      <ProjectReference Include="..\CyberStore.Core\CyberStore.Core.csproj" />
+    </ItemGroup>
+
 </Project>

@@ -1,8 +1,8 @@
-using CyberStore.Models;
-using CyberStore.Repositories.Interfaces;
-using CyberStore.Services.Interfaces;
+using CyberStore.Core.Entities;
+using CyberStore.Data.Repositories.Interfaces;
+using CyberStore.Application.Services.Interfaces;
 
-namespace CyberStore.Services;
+namespace CyberStore.Application.Services;
 
 public class WishlistService(IUnitOfWork unitOfWork) : IWishlistService
 {

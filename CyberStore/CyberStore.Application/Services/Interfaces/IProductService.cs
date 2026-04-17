@@ -1,6 +1,6 @@
-using CyberStore.Models;
+using CyberStore.Core.Entities;
 
-namespace CyberStore.Services.Interfaces;
+namespace CyberStore.Application.Services.Interfaces;
 
 public interface IProductService
 {

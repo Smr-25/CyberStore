@@ -1,4 +1,4 @@
-namespace CyberStore.Models;
+namespace CyberStore.Core.Entities;
 
 public class Product
 {

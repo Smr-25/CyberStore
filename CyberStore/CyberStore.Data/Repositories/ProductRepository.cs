@@ -1,9 +1,9 @@
-using CyberStore.Data;
-using CyberStore.Models;
-using CyberStore.Repositories.Interfaces;
+using CyberStore.Data.Contexts;
+using CyberStore.Core.Entities;
+using CyberStore.Data.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace CyberStore.Repositories;
+namespace CyberStore.Data.Repositories;
 
 public class ProductRepository : GenericRepository<Product>, IProductRepository
 {

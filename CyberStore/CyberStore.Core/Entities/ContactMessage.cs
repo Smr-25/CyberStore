@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace CyberStore.Models;
+namespace CyberStore.Core.Entities;
 
 public class ContactMessage
 {

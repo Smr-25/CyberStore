@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using CyberStore.Models;
-using CyberStore.Services.Interfaces;
+using CyberStore.Core.Entities;
+using CyberStore.Application.Services.Interfaces;
 namespace CyberStore.Controllers;
 public class HomeController : Controller
 {

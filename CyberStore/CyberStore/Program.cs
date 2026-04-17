@@ -9,19 +9,19 @@ builder.Configuration.AddJsonFile("appsettings.Mac.json", optional: true, reload
 builder.Services.AddControllersWithViews();
 
 
-builder.Services.AddDbContext<CyberStore.Data.AppDbContext>(options =>
+builder.Services.AddDbContext<CyberStore.Data.Contexts.AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
-builder.Services.AddScoped(typeof(CyberStore.Repositories.Interfaces.IGenericRepository<>), typeof(CyberStore.Repositories.GenericRepository<>));
-builder.Services.AddScoped<CyberStore.Repositories.Interfaces.IProductRepository, CyberStore.Repositories.ProductRepository>();
-builder.Services.AddScoped<CyberStore.Repositories.Interfaces.IUnitOfWork, CyberStore.Repositories.UnitOfWork>();
+builder.Services.AddScoped(typeof(CyberStore.Data.Repositories.Interfaces.IGenericRepository<>), typeof(CyberStore.Data.Repositories.GenericRepository<>));
+builder.Services.AddScoped<CyberStore.Data.Repositories.Interfaces.IProductRepository, CyberStore.Data.Repositories.ProductRepository>();
+builder.Services.AddScoped<CyberStore.Data.Repositories.Interfaces.IUnitOfWork, CyberStore.Data.Repositories.UnitOfWork>();
 
 
-builder.Services.AddScoped<CyberStore.Services.Interfaces.IProductService, CyberStore.Services.ProductService>();
-builder.Services.AddScoped<CyberStore.Services.Interfaces.ICartService, CyberStore.Services.CartService>();
-builder.Services.AddScoped<CyberStore.Services.Interfaces.IWishlistService, CyberStore.Services.WishlistService>();
-builder.Services.AddScoped<CyberStore.Services.Interfaces.IContactService, CyberStore.Services.ContactService>();
+builder.Services.AddScoped<CyberStore.Application.Services.Interfaces.IProductService, CyberStore.Application.Services.ProductService>();
+builder.Services.AddScoped<CyberStore.Application.Services.Interfaces.ICartService, CyberStore.Application.Services.CartService>();
+builder.Services.AddScoped<CyberStore.Application.Services.Interfaces.IWishlistService, CyberStore.Application.Services.WishlistService>();
+builder.Services.AddScoped<CyberStore.Application.Services.Interfaces.IContactService, CyberStore.Application.Services.ContactService>();
 
 var app = builder.Build();
 

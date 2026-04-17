@@ -1,10 +1,11 @@
-namespace CyberStore.Models;
+namespace CyberStore.Core.Entities;
 
-public class WishlistItem
+public class CartItem
 {
     public int Id { get; set; }
     public int ProductId { get; set; }
     public Product Product { get; set; } = null!;
+    public int Quantity { get; set; }
     public string UserId { get; set; } = string.Empty;
     public DateTime DateAdded { get; set; } = DateTime.UtcNow;
 }

@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using CyberStore.Models;
+using CyberStore.Core.Entities;
 
-namespace CyberStore.Data;
+namespace CyberStore.Data.Contexts;
 
 public class AppDbContext : DbContext
 {

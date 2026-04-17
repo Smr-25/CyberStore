@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using CyberStore.Services.Interfaces;
+using CyberStore.Application.Services.Interfaces;
 
 namespace CyberStore.Controllers;
 

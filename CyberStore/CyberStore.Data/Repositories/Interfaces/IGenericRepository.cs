@@ -1,6 +1,6 @@
 using System.Linq.Expressions;
 
-namespace CyberStore.Repositories.Interfaces;
+namespace CyberStore.Data.Repositories.Interfaces;
 
 public interface IGenericRepository<T> where T : class
 {

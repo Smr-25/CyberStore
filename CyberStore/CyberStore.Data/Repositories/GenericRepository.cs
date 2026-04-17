@@ -1,9 +1,9 @@
-using CyberStore.Data;
-using CyberStore.Repositories.Interfaces;
+using CyberStore.Data.Contexts;
+using CyberStore.Data.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace CyberStore.Repositories;
+namespace CyberStore.Data.Repositories;
 
 public class GenericRepository<T> : IGenericRepository<T> where T : class
 {
