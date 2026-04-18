@@ -1,0 +1,346 @@
+        <div class="products-grid">
+            
+            <div class="product-item">
+                <div class="product-item-header">
+                    <div class="product-category">
+                        <a href="#">Laptop & Tablet</a>
+                    </div>
+                    <div class="product-icons">
+                        <button class="icon-btn compare-btn" type="button">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                        </button>
+                        <button class="icon-btn wishlist-btn-product" type="button">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-item-image">
+                    <img src="./assets/img/h1-product-1.jpg" alt="Apple MacBook Pro">
+                </div>
+
+                <div class="product-item-body">
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+
+                    <h3 class="product-item-title">
+                        <a href="#">Apple MacBook Pro With Touch Bar MF841DSN/A 13"</a>
+                    </h3>
+
+                    <div class="product-item-footer">
+                        <span class="product-price">$1,259</span>
+                        <button class="add-to-cart-btn" type="button">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="product-item">
+                <div class="product-item-header">
+                    <div class="product-category">
+                        <a href="#">Headphones</a>
+                    </div>
+                    <div class="product-icons">
+                        <button class="icon-btn compare-btn" type="button">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                        </button>
+                        <button class="icon-btn wishlist-btn-product" type="button">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-item-image">
+                    <img src="./assets/img/h2-product-10.jpg" alt="Ultra Wireless S50 Headphones">
+                </div>
+
+                <div class="product-item-body">
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+
+                    <h3 class="product-item-title">
+                        <a href="#">Ultra Wireless S50 Headphones with Bluetooth</a>
+                    </h3>
+
+                    <div class="product-item-footer">
+                        <span class="product-price">$349</span>
+                        <button class="add-to-cart-btn" type="button">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="product-item">
+                <div class="product-item-header">
+                    <div class="product-category">
+                        <a href="#">Phones</a>
+                    </div>
+                    <div class="product-icons">
+                        <button class="icon-btn compare-btn" type="button">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                        </button>
+                        <button class="icon-btn wishlist-btn-product" type="button">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-item-image">
+                    <img src="./assets/img/h1-product-3.jpg" alt="Apple iPhone 6s">
+                </div>
+
+                <div class="product-item-body">
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+
+                    <h3 class="product-item-title">
+                        <a href="#">Apple iPhone 6s -16/32/64/ 128GB Grey</a>
+                    </h3>
+
+                    <div class="product-item-footer">
+                        <span class="product-price">$449</span>
+                        <button class="add-to-cart-btn" type="button">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="product-item out-of-stock">
+                <div class="product-item-header">
+                    <span class="product-badge out-of-stock">OUT OF STOCK</span>
+                    <div class="product-category">
+                        <a href="#">Gadgets</a>
+                    </div>
+                    <div class="product-icons">
+                        <button class="icon-btn compare-btn" type="button">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                        </button>
+                        <button class="icon-btn wishlist-btn-product" type="button">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-item-image">
+                    <img src="./assets/img/h1-product-2-800x600.jpg" alt="Apple Watch Sport">
+                </div>
+
+                <div class="product-item-body">
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+
+                    <h3 class="product-item-title">
+                        <a href="#">Apple Watch Sport 42mm New</a>
+                    </h3>
+
+                    <div class="product-item-footer">
+                        <span class="product-price">$349</span>
+                        <button class="add-to-cart-btn disabled" type="button" disabled>
+                            <i class="fa-solid fa-ban"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="product-item">
+                <div class="product-item-header">
+                    <div class="product-category">
+                        <a href="#">Laptop & Tablet</a>
+                    </div>
+                    <div class="product-icons">
+                        <button class="icon-btn compare-btn" type="button">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                        </button>
+                        <button class="icon-btn wishlist-btn-product" type="button">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-item-image">
+                    <span class="new-badge">New</span>
+                    <img src="./assets/img/h1-product-5-800x600.jpg" alt="MacBook Pro Retina Touch Bar">
+                </div>
+
+                <div class="product-item-body">
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+
+                    <h3 class="product-item-title">
+                        <a href="#">MacBook Pro Retina Touch Bar 2.9GHz Intel Core i7 16GB</a>
+                    </h3>
+
+                    <div class="product-item-footer">
+                        <div class="product-price-group">
+                            <span class="product-price-old">$1,599</span>
+                            <span class="product-price">$1,299</span>
+                        </div>
+                        <button class="add-to-cart-btn" type="button">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="product-item">
+                <div class="product-item-header">
+                    <div class="product-category">
+                        <a href="#">Laptop & Tablet</a>
+                    </div>
+                    <div class="product-icons">
+                        <button class="icon-btn compare-btn" type="button">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                        </button>
+                        <button class="icon-btn wishlist-btn-product" type="button">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-item-image">
+                    <span class="new-badge">New</span>
+                    <img src="./assets/img/h1-product-6-800x600.jpg" alt="MacBook Rose Gold">
+                </div>
+
+                <div class="product-item-body">
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+
+                    <h3 class="product-item-title">
+                        <a href="#">MacBook Rose Gold 1.2GHz 256GB butterfly mechanism</a>
+                    </h3>
+
+                    <div class="product-item-footer">
+                        <span class="product-price">$1,299</span>
+                        <button class="add-to-cart-btn" type="button">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="product-item out-of-stock">
+                <div class="product-item-header">
+                    <div class="product-category">
+                        <a href="#">Home Appliances</a>
+                    </div>
+                    <div class="product-icons">
+                        <button class="icon-btn compare-btn" type="button">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                        </button>
+                        <button class="icon-btn wishlist-btn-product" type="button">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-item-image">
+                    <span class="out-of-stock-badge">Out Of Stock</span>
+                    <img src="./assets/img/h1-product-7-800x600.jpg" alt="TCL 32S305">
+                </div>
+
+                <div class="product-item-body">
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+
+                    <h3 class="product-item-title">
+                        <a href="#">TCL 32S305 32-Inch 720p Roku Smart LED TV</a>
+                    </h3>
+
+                    <div class="product-item-footer">
+                        <span class="product-price">$675</span>
+                        <button class="add-to-cart-btn disabled" type="button" disabled>
+                            <i class="fa-solid fa-ban"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="product-item">
+                <div class="product-item-header">
+                    <div class="product-category">
+                        <a href="#">Phones</a>
+                    </div>
+                    <div class="product-icons">
+                        <button class="icon-btn compare-btn" type="button">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                        </button>
+                        <button class="icon-btn wishlist-btn-product" type="button">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-item-image">
+                    <img src="./assets/img/h1-product-8-800x600.jpg " alt="Apple iPhone 7">
+                </div>
+
+                <div class="product-item-body">
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+
+                    <h3 class="product-item-title">
+                        <a href="#">Apple iPhone 7 4.7-Inch Silver 128GB Contact-Free</a>
+                    </h3>
+
+                    <div class="product-item-footer">
+                        <span class="product-price">$749</span>
+                        <button class="add-to-cart-btn" type="button">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
