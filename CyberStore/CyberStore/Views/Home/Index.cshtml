@@ -401,42 +401,68 @@
 
         
         <div class="tab-content active" id="tab-all">
-            <div class="tab-products-grid">
-                
-                <div class="tab-product-single">
-                    <div class="tab-product-card">
-                        <div class="tab-product-header">
-                            <span class="tab-product-category">Android</span>
-                            <div class="tab-product-actions">
-                                <button class="tab-action-btn" type="button">
-                                    <i class="fa-solid fa-arrows-rotate"></i>
-                                </button>
-                                <button class="tab-action-btn wishlist-btn-product" type="button">
-                                    <i class="fa-regular fa-heart"></i>
-                                </button>
-                            </div>
-                        </div>
+             <div class="tab-products-grid">
+                 @foreach (var product in Model.Take(12))
+                 {
+                 <div class="tab-product-single">
+                     <div class="tab-product-card">
+                         <div class="tab-product-header">
+                             <span class="tab-product-category">@(product.Category?.Name ?? "Product")</span>
+                             <div class="tab-product-actions">
+                                 <button class="tab-action-btn" type="button">
+                                     <i class="fa-solid fa-arrows-rotate"></i>
+                                 </button>
+                                 <form asp-controller="Store" asp-action="AddToWishlist" method="post" style="display:inline;">
+                                     <input type="hidden" name="productId" value="@product.Id" />
+                                     <button type="submit" class="tab-action-btn wishlist-btn-product">
+                                         <i class="fa-regular fa-heart"></i>
+                                     </button>
+                                 </form>
+                             </div>
+                         </div>
 
-                        <div class="tab-product-image">
-                            <img src="./assets/img/h1-masonry-product-1.jpg" alt="LG K10 LTE">
-                        </div>
+                         <div class="tab-product-image">
+                             <img src="@product.ImageUrl" alt="@product.Name">
+                         </div>
 
-                        <div class="tab-product-info">
-                            <h4 class="tab-product-title">
-                                <a href="#">LG K10 LTE Silver 16GB<br>Contact Free Smartphone</a>
-                            </h4>
-                            <div class="tab-product-footer">
-                                <span class="tab-product-price">$345</span>
-                                <button class="tab-cart-btn" type="button">
-                                    <i class="fa-solid fa-cart-shopping"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                
-                <div class="tab-product-group">
+                         <div class="tab-product-info">
+                             <h4 class="tab-product-title">
+                                 <a asp-controller="Store" asp-action="Details" asp-route-id="@product.Id">@product.Name</a>
+                             </h4>
+                             <div class="tab-product-footer">
+                                 @if (product.OldPrice.HasValue)
+                                 {
+                                     <div style="display: flex; gap: 5px; align-items: center;">
+                                         <span style="text-decoration: line-through; color: #999;">$@product.OldPrice.Value.ToString("0.00")</span>
+                                         <span class="tab-product-price">$@product.Price.ToString("0.00")</span>
+                                     </div>
+                                 }
+                                 else
+                                 {
+                                     <span class="tab-product-price">$@product.Price.ToString("0.00")</span>
+                                 }
+                                 @if (product.StockQuantity > 0)
+                                 {
+                                     <form asp-controller="Store" asp-action="AddToCart" method="post" style="display:inline;">
+                                         <input type="hidden" name="productId" value="@product.Id" />
+                                         <input type="hidden" name="quantity" value="1" />
+                                         <button type="submit" class="tab-cart-btn">
+                                             <i class="fa-solid fa-cart-shopping"></i>
+                                         </button>
+                                     </form>
+                                 }
+                                 else
+                                 {
+                                     <button class="tab-cart-btn" type="button" disabled>
+                                         <i class="fa-solid fa-ban"></i>
+                                     </button>
+                                 }
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 }
+                 
                     
                     <div class="tab-product-card">
                         <div class="tab-product-image">
@@ -569,42 +595,42 @@
 
         
         <div class="tab-content" id="tab-smartphone">
-            <div class="tab-products-grid">
-                
-                <div class="tab-product-single">
-                    <div class="tab-product-card">
-                        <div class="tab-product-header">
-                            <span class="tab-product-category">Smartphone</span>
-                            <div class="tab-product-actions">
-                                <button class="tab-action-btn" type="button">
-                                    <i class="fa-solid fa-arrows-rotate"></i>
-                                </button>
-                                <button class="tab-action-btn wishlist-btn-product" type="button">
-                                    <i class="fa-regular fa-heart"></i>
-                                </button>
-                            </div>
-                        </div>
+             <div class="tab-products-grid">
+                 @foreach (var product in Model.Where(p => p.Category?.Name.Contains("phone", StringComparison.OrdinalIgnoreCase) ?? false).Take(12))
+                 {
+                 <div class="tab-product-single">
+                     <div class="tab-product-card">
+                         <div class="tab-product-header">
+                             <span class="tab-product-category">@(product.Category?.Name ?? "Phone")</span>
+                             <div class="tab-product-actions">
+                                 <button class="tab-action-btn" type="button">
+                                     <i class="fa-solid fa-arrows-rotate"></i>
+                                 </button>
+                                 <button class="tab-action-btn wishlist-btn-product" type="button">
+                                     <i class="fa-regular fa-heart"></i>
+                                 </button>
+                             </div>
+                         </div>
 
-                        <div class="tab-product-image">
-                            <img src="./assets/img/h1-masonry-product-1.jpg" alt="Smartphone">
-                        </div>
+                         <div class="tab-product-image">
+                             <img src="@product.ImageUrl" alt="@product.Name">
+                         </div>
 
-                        <div class="tab-product-info">
-                            <h4 class="tab-product-title">
-                                <a href="#">Premium Smartphone<br>Model 2024</a>
-                            </h4>
-                            <div class="tab-product-footer">
-                                <span class="tab-product-price">$599</span>
-                                <button class="tab-cart-btn" type="button">
-                                    <i class="fa-solid fa-cart-shopping"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                
-                <div class="tab-product-group">
+                         <div class="tab-product-info">
+                             <h4 class="tab-product-title">
+                                 <a asp-controller="Store" asp-action="Details" asp-route-id="@product.Id">@product.Name</a>
+                             </h4>
+                             <div class="tab-product-footer">
+                                 <span class="tab-product-price">$@product.Price.ToString("0.00")</span>
+                                 <button class="tab-cart-btn" type="button">
+                                     <i class="fa-solid fa-cart-shopping"></i>
+                                 </button>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 }
+                 
                     
                     <div class="tab-product-card">
                         <div class="tab-product-image">
@@ -735,345 +761,7 @@
             </div>
         </div>
 
-        
-        <div class="tab-content" id="tab-android">
-            <div class="tab-products-grid">
-                
-                <div class="tab-product-card">
-                    <div class="tab-product-header">
-                        <span class="tab-product-category">Android</span>
-                        <div class="tab-product-actions">
-                            <button class="tab-action-btn" type="button">
-                                <i class="fa-solid fa-arrows-rotate"></i>
-                            </button>
-                            <button class="tab-action-btn wishlist-btn-product" type="button">
-                                <i class="fa-regular fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="tab-product-image">
-                        <img src="./assets/img/h1-masonry-product-1.jpg" alt="Android Phone">
-                    </div>
-
-                    <div class="tab-product-info">
-                        <h4 class="tab-product-title">
-                            <a href="#">LG K10 LTE Silver 16GB<br>Contact Free Smartphone</a>
-                        </h4>
-                        <div class="tab-product-footer">
-                            <span class="tab-product-price">$345</span>
-                            <button class="tab-cart-btn" type="button">
-                                <i class="fa-solid fa-cart-shopping"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tab-product-card">
-                    <div class="tab-product-header">
-                        <span class="tab-product-category">Android</span>
-                        <div class="tab-product-actions">
-                            <button class="tab-action-btn" type="button">
-                                <i class="fa-solid fa-arrows-rotate"></i>
-                            </button>
-                            <button class="tab-action-btn wishlist-btn-product" type="button">
-                                <i class="fa-regular fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="tab-product-image">
-                        <img src="./assets/img/h1-masonry-product-4.jpg" alt="Samsung Galaxy">
-                    </div>
-
-                    <div class="tab-product-info">
-                        <h4 class="tab-product-title">
-                            <a href="#">Samsung Galaxy S8+<br>Black 64GB</a>
-                        </h4>
-                        <div class="tab-product-footer">
-                            <span class="tab-product-price">$499</span>
-                            <button class="tab-cart-btn" type="button">
-                                <i class="fa-solid fa-cart-shopping"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        
-        <div class="tab-content" id="tab-iphone">
-            <div class="tab-products-grid">
-                
-                <div class="tab-product-card">
-                    <div class="tab-product-header">
-                        <span class="tab-product-category">iPhone</span>
-                        <div class="tab-product-actions">
-                            <button class="tab-action-btn" type="button">
-                                <i class="fa-solid fa-arrows-rotate"></i>
-                            </button>
-                            <button class="tab-action-btn wishlist-btn-product" type="button">
-                                <i class="fa-regular fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="tab-product-image">
-                        <img src="./assets/img/h1-masonry-product-2.jpg" alt="iPhone 6">
-                    </div>
-
-                    <div class="tab-product-info">
-                        <h4 class="tab-product-title">
-                            <a href="#">Apple iPhone 6 4.7-Inch<br>Black 128GB</a>
-                        </h4>
-                        <div class="tab-product-footer">
-                            <span class="tab-product-price">$399</span>
-                            <button class="tab-cart-btn" type="button">
-                                <i class="fa-solid fa-cart-shopping"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tab-product-card">
-                    <div class="tab-product-header">
-                        <span class="tab-product-category">iPhone</span>
-                        <div class="tab-product-actions">
-                            <button class="tab-action-btn" type="button">
-                                <i class="fa-solid fa-arrows-rotate"></i>
-                            </button>
-                            <button class="tab-action-btn wishlist-btn-product" type="button">
-                                <i class="fa-regular fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="tab-product-image">
-                        <img src="./assets/img/h1-masonry-product-3.jpg" alt="iPhone 6s">
-                    </div>
-
-                    <div class="tab-product-info">
-                        <h4 class="tab-product-title">
-                            <a href="#">Apple iPhone 6s 4.7-Inch<br>Gold 64GB</a>
-                        </h4>
-                        <div class="tab-product-footer">
-                            <div class="tab-product-prices">
-                                <span class="tab-price-old">$499</span>
-                                <span class="tab-product-price">$449</span>
-                            </div>
-                            <button class="tab-cart-btn" type="button">
-                                <i class="fa-solid fa-cart-shopping"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tab-product-card">
-                    <div class="tab-product-header">
-                        <span class="tab-product-category">iPhone</span>
-                        <div class="tab-product-actions">
-                            <button class="tab-action-btn" type="button">
-                                <i class="fa-solid fa-arrows-rotate"></i>
-                            </button>
-                            <button class="tab-action-btn wishlist-btn-product" type="button">
-                                <i class="fa-regular fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="tab-product-image">
-                        <img src="./assets/img/h1-masonry-product-5.jpg" alt="iPhone Rose Gold">
-                    </div>
-
-                    <div class="tab-product-info">
-                        <h4 class="tab-product-title">
-                            <a href="#">Apple iPhone 6 4.7-Inch<br>Rose Gold 16GB</a>
-                        </h4>
-                        <div class="tab-product-footer">
-                            <span class="tab-product-price">$349</span>
-                            <button class="tab-cart-btn" type="button">
-                                <i class="fa-solid fa-cart-shopping"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<section class="tabbed-products-section">
-    <div class="tabbed-products-container">
-        
-        <h2 class="tabbed-section-title">Movies, Music & Video Games</h2>
-
-        
-        <div class="tab-content-2 active" id="tab-2-all">
-            <div class="movies-products-layout">
-                
-                <div class="movies-left-grid">
-                    
-                    <div class="tab-product-card">
-                    <div class="tab-product-header">
-                        <div class="tab-product-actions">
-                            <button class="tab-action-btn" type="button">
-                                <i class="fa-solid fa-arrows-rotate"></i>
-                            </button>
-                            <button class="tab-action-btn wishlist-btn-product" type="button">
-                                <i class="fa-regular fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="tab-product-image">
-                        <img src="./assets/img/h1-masonry-product-6.jpg" alt="LG K10 LTE">
-                    </div>
-
-                    <div class="tab-product-info">
-                        <span class="tab-product-category">Movies,Music&Videos</span>
-                        <h4 class="tab-product-title">
-                            <a href="#">Children's Movie Part 3,<br>Documentary</a>
-                        </h4>
-                        <div class="tab-product-footer">
-                            <span class="tab-product-price">$19</span>
-                            <button class="tab-cart-btn" type="button">
-                                <i class="fa-solid fa-cart-shopping"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                
-                <div class="tab-product-card">
-                    <div class="tab-product-header">
-                        <div class="tab-product-actions">
-                            <button class="tab-action-btn" type="button">
-                                <i class="fa-solid fa-arrows-rotate"></i>
-                            </button>
-                            <button class="tab-action-btn wishlist-btn-product" type="button">
-                                <i class="fa-regular fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="tab-product-image">
-                        <img src="./assets/img/h1-masonry-product-7.jpg" alt="Apple iPhone 6">
-                    </div>
-
-                    <div class="tab-product-info">
-                        <span class="tab-product-category">Music&Videos</span>
-                        <h4 class="tab-product-title">
-                            <a href="#">Action Movie,<br>Sound Mixing</a>
-                        </h4>
-                        <div class="tab-product-footer">
-                            <span class="tab-product-price">$22</span>
-                            <button class="tab-cart-btn" type="button">
-                                <i class="fa-solid fa-cart-shopping"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                
-                <div class="tab-product-card">
-                    <div class="tab-product-header">
-                        <div class="tab-product-actions">
-                            <button class="tab-action-btn" type="button">
-                                <i class="fa-solid fa-arrows-rotate"></i>
-                            </button>
-                            <button class="tab-action-btn wishlist-btn-product" type="button">
-                                <i class="fa-regular fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="tab-product-image">
-                        <span class="tab-badge tab-badge-sale">Sale</span>
-                        <img src="./assets/img/h1-masonry-product-9.jpg" alt="Apple iPhone 6s Gold">
-                    </div>
-
-                    <div class="tab-product-info">
-                        <span class="tab-product-category">Music&Videos</span>
-                        <h4 class="tab-product-title">
-                            <a href="#">Futuristic Movie,<br>Visual Effects</a>
-                        </h4>
-                        <div class="tab-product-footer">
-                            <div class="tab-product-prices">
-                                <span class="tab-product-price">$20</span>
-                            </div>
-                            <button class="tab-cart-btn" type="button">
-                                <i class="fa-solid fa-cart-shopping"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                
-                <div class="tab-product-card">
-                    <div class="tab-product-header">
-                        <div class="tab-product-actions">
-                            <button class="tab-action-btn" type="button">
-                                <i class="fa-solid fa-arrows-rotate"></i>
-                            </button>
-                            <button class="tab-action-btn wishlist-btn-product" type="button">
-                                <i class="fa-regular fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="tab-product-image">
-                        <img src="./assets/img/h1-masonry-product-10.jpg" alt="Samsung Galaxy S8+">
-                    </div>
-
-                    <div class="tab-product-info">
-                        <span class="tab-product-category">Movies, Music&Videos</span>
-                        <h4 class="tab-product-title">
-                            <a href="#">Animated Movie,<br>Foreign Language</a>
-                        </h4>
-                        <div class="tab-product-footer">
-                            <span class="tab-product-price">$14</span>
-                            <button class="tab-cart-btn" type="button">
-                                <i class="fa-solid fa-cart-shopping"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                </div>
-
-                
-                <div class="movies-right-featured">
-                    <div class="tab-product-card featured-card">
-                        <div class="tab-product-header">
-                            <div class="tab-product-actions">
-                                <button class="tab-action-btn" type="button">
-                                    <i class="fa-solid fa-arrows-rotate"></i>
-                                </button>
-                                <button class="tab-action-btn wishlist-btn-product" type="button">
-                                    <i class="fa-regular fa-heart"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="tab-product-image">
-                            <img src="./assets/img/h1-masonry-product-8.jpg" alt="Apple iPhone 6 Rose Gold">
-                        </div>
-
-                        <div class="tab-product-info">
-                            <span class="tab-product-category">Music&Videos</span>
-                            <h4 class="tab-product-title">
-                                <a href="#">Continuum Season 1,<br>Original Screenplay</a>
-                            </h4>
-                            <div class="tab-product-footer">
-                                <span class="tab-product-price">$16</span>
-                                <button class="tab-cart-btn" type="button">
-                                    <i class="fa-solid fa-cart-shopping"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+         </div>
         </div>
     </div>
 </section>
