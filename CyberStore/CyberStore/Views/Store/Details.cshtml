@@ -108,36 +108,48 @@
 </section>
 
 
+<section class="breadcrumb-section">
+    <div class="breadcrumb-container">
+        <a href="/">Home</a>
+        <span>/</span>
+        <a href="#">Shop</a>
+        <span>/</span>
+        <a href="#">@(Model.Category?.Name ?? "General")</a>
+        <span>/</span>
+        <span>@Model.Name</span>
+    </div>
+</section>
+
+
 <section class="product-detail-section">
     <div class="product-detail-container">
         
         <div class="product-thumbnails">
             <div class="thumbnail-item active">
-                <img src="./assets/img/product-3-gallery-4-150x150.jpg" alt="iPhone thumbnail 1">
-            </div>
-            <div class="thumbnail-item">
-                <img src="./assets/img/product-3-gallery-2-150x150.jpg" alt="iPhone thumbnail 2">
-            </div>
-            <div class="thumbnail-item">
-                <img src="./assets/img/product-3-gallery-1-150x150.jpg" alt="iPhone thumbnail 3">
-            </div>
-            <div class="thumbnail-item">
-                <img src="./assets/img/product-3-gallery-3-150x150.jpg" alt="iPhone thumbnail 4">
+                <img src="@Model.ImageUrl" alt="@Model.Name">
             </div>
         </div>
 
         
         <div class="product-main-image">
-            <img src="./assets/img/h1-product-3.jpg" alt="Apple iPhone 6s">
+            <img src="@Model.ImageUrl" alt="@Model.Name">
         </div>
 
         
         <div class="product-info">
-            <h1 class="product-title">Apple iPhone 6s -16/32/64/ 128GB Grey</h1>
+            <h1 class="product-title">@Model.Name</h1>
 
             <div class="product-price-stock">
-                <span class="product-price">$449</span>
-                <span class="product-stock">11 in stock</span>
+                @if (Model.OldPrice.HasValue)
+                {
+                    <span class="product-price-old" style="text-decoration:line-through;color:#aaa;margin-right:10px;">$@Model.OldPrice.Value.ToString("0.00")</span>
+                    <span class="product-price">$@Model.Price.ToString("0.00")</span>
+                }
+                else
+                {
+                    <span class="product-price">$@Model.Price.ToString("0.00")</span>
+                }
+                <span class="product-stock" style="color: @(Model.StockQuantity > 0 ? "green" : "red")">@Model.StockQuantity in stock</span>
             </div>
 
             <div class="product-rating">
@@ -152,42 +164,38 @@
             </div>
 
             <ul class="product-features">
-                <li>Lorem ipsum dolor sit amet dico</li>
-                <li>Mea volumus verterem adipisci at</li>
-                <li>Mel ex mundi scripta gloriatur</li>
+                <li>@Model.Description</li>
             </ul>
 
-            <div class="product-actions">
+            <form asp-controller="Store" asp-action="AddToCart" method="post" class="product-actions" style="display:flex; gap:15px; align-items:flex-end;">
+                <input type="hidden" name="productId" value="@Model.Id" />
                 <div class="quantity-selector">
                     <label>Quantity</label>
                     <div class="quantity-controls">
-                        <button class="qty-btn minus">-</button>
-                        <input type="number" value="1" min="1" class="qty-input">
-                        <button class="qty-btn plus">+</button>
+                        <button type="button" class="qty-btn minus" onclick="this.nextElementSibling.stepDown()">-</button>
+                        <input type="number" name="quantity" value="1" min="1" max="@Model.StockQuantity" class="qty-input">
+                        <button type="button" class="qty-btn plus" onclick="this.previousElementSibling.stepUp()">+</button>
                     </div>
                 </div>
-                <button class="add-to-cart-btn">Add To Cart</button>
-            </div>
+                <button type="submit" class="add-to-cart-btn" @(Model.StockQuantity == 0 ? "disabled" : "")>Add To Cart</button>
+            </form>
 
-            <div class="product-secondary-actions">
-                <button class="wishlist-action">
+            <form asp-controller="Store" asp-action="AddToWishlist" method="post" class="product-secondary-actions" style="margin-top:20px;">
+                <input type="hidden" name="productId" value="@Model.Id" />
+                <button type="submit" class="wishlist-action" style="background:transparent; border:none; cursor:pointer; color:#666; font-size:14px; font-weight:500;">
                     <i class="fa-regular fa-heart"></i>
                     <span>Add To Wishlist</span>
                 </button>
-                <button class="compare-action">
-                    <i class="fa-solid fa-scale-balanced"></i>
-                    <span>Compare</span>
-                </button>
-            </div>
+            </form>
 
             <div class="product-meta">
                 <div class="meta-item">
-                    <span class="meta-label">SKU:</span>
-                    <span class="meta-value">003</span>
+                    <span class="meta-label">Category:</span>
+                    <a href="#" class="meta-link">@(Model.Category?.Name ?? "General")</a>
                 </div>
                 <div class="meta-item">
-                    <span class="meta-label">Category:</span>
-                    <a href="#" class="meta-link">Phones</a>
+                    <span class="meta-label">Brand:</span>
+                    <a href="#" class="meta-link">@(Model.Brand?.Name ?? "Unknown")</a>
                 </div>
             </div>
         </div>
@@ -1018,3 +1026,4 @@
 
 </body>
 </html>
+
