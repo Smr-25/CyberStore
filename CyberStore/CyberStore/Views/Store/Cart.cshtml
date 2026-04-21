@@ -1,3 +1,7 @@
+@model IEnumerable<CyberStore.Core.Entities.CartItem>
+@{
+    ViewData["Title"] = "Shopping Cart - Cyberstore";
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -107,11 +111,53 @@
 
         <div class="cart-layout">
             <div class="cart-items-container">
-                
+                @if (Model != null && Model.Any())
+                {
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <img src="@item.Product.ImageUrl" alt="@item.Product.Name" width="50" />
+                                        @item.Product.Name
+                                    </td>
+                                    <td>$@item.Product.Price</td>
+                                    <td>@item.Quantity</td>
+                                    <td>$@(item.Product.Price * item.Quantity)</td>
+                                    <td>
+                                        <form asp-controller="Store" asp-action="RemoveFromCart" method="post">
+                                            <input type="hidden" name="id" value="@item.Id" />
+                                            <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <p>Your cart is currently empty.</p>
+                }
             </div>
 
             <div class="cart-summary">
-                
+                @if (Model != null && Model.Any())
+                {
+                    <h3>Cart Totals</h3>
+                    <p>Total: $@Model.Sum(x => x.Product.Price * x.Quantity)</p>
+                    <a href="#" class="btn btn-primary">Proceed to Checkout</a>
+                }
             </div>
         </div>
     </div>

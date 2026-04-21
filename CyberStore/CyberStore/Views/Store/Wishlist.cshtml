@@ -1,3 +1,7 @@
+@model IEnumerable<CyberStore.Core.Entities.WishlistItem>
+@{
+    ViewData["Title"] = "Wishlist - Cyberstore";
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -103,11 +107,49 @@
     <div class="wishlist-page-container">
         <div class="wishlist-page-header">
             <h1>My Wishlist</h1>
-            <p class="wishlist-count-text">0 items in wishlist</p>
+            <p class="wishlist-count-text">@(Model?.Count() ?? 0) items in wishlist</p>
         </div>
 
         <div class="wishlist-items-container">
-            
+            @if (Model != null && Model.Any())
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <img src="@item.Product.ImageUrl" alt="@item.Product.Name" width="50" />
+                                    <a asp-controller="Store" asp-action="Details" asp-route-id="@item.Product.Id">@item.Product.Name</a>
+                                </td>
+                                <td>$@item.Product.Price</td>
+                                <td>
+                                    <form asp-controller="Store" asp-action="RemoveFromWishlist" method="post" style="display:inline;">
+                                        <input type="hidden" name="id" value="@item.Id" />
+                                        <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                                    </form>
+                                    <form asp-controller="Store" asp-action="AddToCart" method="post" style="display:inline;">
+                                        <input type="hidden" name="productId" value="@item.ProductId" />
+                                        <input type="hidden" name="quantity" value="1" />
+                                        <button type="submit" class="btn btn-primary btn-sm">Add to Cart</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p>Your wishlist is currently empty.</p>
+            }
         </div>
     </div>
 </section>
