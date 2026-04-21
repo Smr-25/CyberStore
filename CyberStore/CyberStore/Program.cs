@@ -25,6 +25,21 @@ builder.Services.AddScoped<CyberStore.Application.Services.Interfaces.IContactSe
 
 var app = builder.Build();
 
+// Create or migrate the database
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<CyberStore.Data.Contexts.AppDbContext>();
+        context.Database.Migrate();
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Database migration error: {ex.Message}");
+    }
+}
+
 
 if (!app.Environment.IsDevelopment())
 {

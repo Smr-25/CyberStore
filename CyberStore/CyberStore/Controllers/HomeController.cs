@@ -2,18 +2,28 @@ using Microsoft.AspNetCore.Mvc;
 using CyberStore.Core.Entities;
 using CyberStore.Application.Services.Interfaces;
 namespace CyberStore.Controllers;
-public class HomeController : Controller
+public class HomeController(IProductService productService, IContactService contactService)
+    : Controller
 {
-    private readonly IProductService _productService;
-    private readonly IContactService _contactService;
-    public HomeController(IProductService productService, IContactService contactService)
+    public async Task<IActionResult> Index(string search = "", int categoryId = 0)
     {
-        _productService = productService;
-        _contactService = contactService;
-    }
-    public async Task<IActionResult> Index()
-    {
-        var products = await _productService.GetAllProductsAsync();
+        IEnumerable<Product> products;
+
+        if (!string.IsNullOrWhiteSpace(search))
+        {
+            products = await productService.SearchProductsAsync(search);
+        }
+        else if (categoryId > 0)
+        {
+            products = await productService.GetProductsByCategoryAsync(categoryId);
+        }
+        else
+        {
+            products = await productService.GetAllProductsAsync();
+        }
+
+        ViewData["SearchTerm"] = search;
+        ViewData["SelectedCategory"] = categoryId;
         return View(products);
     }
     public IActionResult Contact()
@@ -26,7 +36,7 @@ public class HomeController : Controller
     {
         if (ModelState.IsValid)
         {
-            await _contactService.SubmitMessageAsync(model);
+            await contactService.SubmitMessageAsync(model);
             TempData["SuccessMessage"] = "Your message has been sent successfully.";
             return RedirectToAction(nameof(Contact));
         }

@@ -35,4 +35,13 @@ public class ProductRepository : GenericRepository<Product>, IProductRepository
             .Include(p => p.Brand)
             .FirstOrDefaultAsync(p => p.Id == id);
     }
+
+    public async Task<IEnumerable<Product>> SearchProductsAsync(string searchTerm)
+    {
+        return await _dbSet
+            .Where(p => p.Name.Contains(searchTerm) || p.Description.Contains(searchTerm))
+            .Include(p => p.Category)
+            .Include(p => p.Brand)
+            .ToListAsync();
+    }
 }

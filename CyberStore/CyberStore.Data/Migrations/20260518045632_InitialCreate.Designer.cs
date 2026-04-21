@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CyberStore.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260512154652_InitialCreate")]
+    [Migration("20260518045632_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -44,6 +44,26 @@ namespace CyberStore.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Brands");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            LogoUrl = "",
+                            Name = "Apple"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            LogoUrl = "",
+                            Name = "Samsung"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            LogoUrl = "",
+                            Name = "Sony"
+                        });
                 });
 
             modelBuilder.Entity("CyberStore.Core.Entities.CartItem", b =>
@@ -93,6 +113,26 @@ namespace CyberStore.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Icon = "fa-laptop",
+                            Name = "Laptops & Tablets"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Icon = "fa-mobile",
+                            Name = "Smartphones"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Icon = "fa-headphones",
+                            Name = "Accessories"
+                        });
                 });
 
             modelBuilder.Entity("CyberStore.Core.Entities.ContactMessage", b =>
@@ -176,6 +216,45 @@ namespace CyberStore.Data.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BrandId = 1,
+                            CategoryId = 1,
+                            Description = "With Touch Bar MF841DSN/A",
+                            ImageUrl = "./assets/img/h1-product-1.jpg",
+                            IsNew = true,
+                            Name = "Apple MacBook Pro 13\"",
+                            Price = 1259.00m,
+                            StockQuantity = 10
+                        },
+                        new
+                        {
+                            Id = 2,
+                            BrandId = 3,
+                            CategoryId = 3,
+                            Description = "With Bluetooth",
+                            ImageUrl = "./assets/img/h2-product-10.jpg",
+                            IsNew = false,
+                            Name = "Ultra Wireless S50 Headphones",
+                            Price = 349.00m,
+                            StockQuantity = 20
+                        },
+                        new
+                        {
+                            Id = 3,
+                            BrandId = 1,
+                            CategoryId = 2,
+                            Description = "128GB Grey",
+                            ImageUrl = "./assets/img/h1-product-3.jpg",
+                            IsNew = true,
+                            Name = "Apple iPhone 14 Pro",
+                            OldPrice = 1099.00m,
+                            Price = 999.00m,
+                            StockQuantity = 15
+                        });
                 });
 
             modelBuilder.Entity("CyberStore.Core.Entities.WishlistItem", b =>

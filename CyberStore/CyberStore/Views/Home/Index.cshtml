@@ -89,31 +89,12 @@
                 </div>
             </div>
 
-            <div class="search-bar">
-                <input type="text" placeholder="Search for Product..." id="searchInput" autocomplete="off">
-                <button class="search-btn" type="button" id="searchBtn">
+            <form class="search-bar" asp-action="Index" asp-controller="Home" method="get">
+                <input type="text" placeholder="Search for Product..." name="search" value="@ViewData["SearchTerm"]" autocomplete="off">
+                <button class="search-btn" type="submit">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
-
-                
-                <div class="search-results-dropdown" id="searchResultsDropdown">
-                    <div class="search-results-header">
-                        <span class="results-count">0 results found</span>
-                        <button class="clear-search-btn" id="clearSearchBtn">
-                            <i class="fa-solid fa-xmark"></i>
-                        </button>
-                    </div>
-                    <div class="search-results-list" id="searchResultsList">
-                        
-                    </div>
-                    <div class="search-results-footer" id="searchResultsFooter">
-                        <button class="show-more-btn" id="showMoreBtn">
-                            Show More Results
-                            <i class="fa-solid fa-chevron-down"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
+            </form>
         </div>
 
         <div class="header-actions">
@@ -250,8 +231,19 @@
 
 <section class="featured-items-section">
     <div class="featured-items-container">
-        <h2 class="section-title">Featured Items</h2>
-        <p class="section-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor <br> incididunt ut labore et dol ad minim veniam, quis nostrud exercitation</p>
+        @if (!string.IsNullOrEmpty(ViewData["SearchTerm"]?.ToString()))
+        {
+            <h2 class="section-title">Search Results for "@ViewData["SearchTerm"]"</h2>
+        }
+        else if (ViewData["SelectedCategory"] is int categoryId && categoryId > 0)
+        {
+            <h2 class="section-title">Category Filter Applied</h2>
+        }
+        else
+        {
+            <h2 class="section-title">Featured Items</h2>
+            <p class="section-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor <br> incididunt ut labore et dol ad minim veniam, quis nostrud exercitation</p>
+        }
 
         <div class="products-grid">
             @foreach (var product in Model)
@@ -760,9 +752,9 @@
                 </div>
             </div>
         </div>
-
-         </div>
-        </div>
+    </div>
+    </div>
+    </div>
     </div>
 </section>
 
