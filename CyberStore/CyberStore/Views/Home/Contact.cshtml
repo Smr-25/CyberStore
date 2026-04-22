@@ -1,3 +1,7 @@
+@model CyberStore.Core.Entities.ContactMessage
+@{
+    ViewData["Title"] = "Contact Us - Cyberstore";
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -154,26 +158,37 @@
                 <h2>Leave Us a Message</h2>
                 <p class="form-subtitle">Your email address will not be published. Required fields are marked <span class="required">*</span></p>
 
-                <form class="contact-form">
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div class="alert alert-success" style="color: green; margin-bottom: 15px;">
+                        @TempData["SuccessMessage"]
+                    </div>
+                }
+
+                <form class="contact-form" asp-controller="Home" asp-action="SubmitContact" method="post">
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="name">Name*</label>
-                            <input type="text" id="name" required>
+                            <label asp-for="Name">Name*</label>
+                            <input asp-for="Name" type="text" required>
+                            <span asp-validation-for="Name" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email*</label>
-                            <input type="email" id="email" required>
+                            <label asp-for="Email">Email*</label>
+                            <input asp-for="Email" type="email" required>
+                            <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject">
+                        <label asp-for="Subject">Subject</label>
+                        <input asp-for="Subject" type="text" required>
+                        <span asp-validation-for="Subject" class="text-danger"></span>
                     </div>
 
                     <div class="form-group full-width">
-                        <label for="message">Your Message</label>
-                        <textarea id="message" rows="12" placeholder="Type here..."></textarea>
+                        <label asp-for="Message">Your Message</label>
+                        <textarea asp-for="Message" rows="12" placeholder="Type here..." required></textarea>
+                        <span asp-validation-for="Message" class="text-danger"></span>
                     </div>
 
                     <button type="submit" class="submit-button">Send Message</button>
@@ -293,3 +308,4 @@
 <script src="./assets/js/script2.js"></script>
 </body>
 </html>
+
