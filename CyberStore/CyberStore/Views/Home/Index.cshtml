@@ -245,6 +245,29 @@
             <p class="section-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor <br> incididunt ut labore et dol ad minim veniam, quis nostrud exercitation</p>
         }
 
+        <!-- Sorting -->
+        <div style="margin: 20px 0; display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-size: 14px; color: #666;">
+                @if (ViewData["TotalCount"] != null)
+                {
+                    <span>Showing @Model.Count() of @ViewData["TotalCount"] products</span>
+                }
+            </div>
+            <div>
+                <form asp-action="Index" asp-controller="Home" method="get" style="display: inline;">
+                    <input type="hidden" name="search" value="@ViewData["SearchTerm"]" />
+                    <input type="hidden" name="categoryId" value="@ViewData["SelectedCategory"]" />
+                    <input type="hidden" name="page" value="1" />
+                    <select name="sortBy" style="padding: 8px; border-radius: 4px; border: 1px solid #ddd;" onchange="this.form.submit();">
+                        <option value="name" selected="@(ViewData["SortBy"]?.ToString() == "name" ? "selected" : "")">Sort by Name</option>
+                        <option value="price_asc" selected="@(ViewData["SortBy"]?.ToString() == "price_asc" ? "selected" : "")">Price: Low to High</option>
+                        <option value="price_desc" selected="@(ViewData["SortBy"]?.ToString() == "price_desc" ? "selected" : "")">Price: High to Low</option>
+                        <option value="newest" selected="@(ViewData["SortBy"]?.ToString() == "newest" ? "selected" : "")">Newest First</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+
         <div class="products-grid">
             @foreach (var product in Model)
             {
@@ -327,6 +350,43 @@
                 </div>
             }
         </div>
+
+        <!-- Pagination -->
+        @if (ViewData["TotalPages"] is int totalPages && totalPages > 1)
+        {
+            <div style="margin-top: 40px; text-align: center;">
+                <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+                    @{
+                        int currentPage = (int?)ViewData["CurrentPage"] ?? 1;
+                        string searchTerm = ViewData["SearchTerm"]?.ToString() ?? "";
+                        int selectedCategory = (int?)ViewData["SelectedCategory"] ?? 0;
+                        string sortBy = ViewData["SortBy"]?.ToString() ?? "name";
+
+                        if (currentPage > 1)
+                        {
+                            <a asp-action="Index" asp-controller="Home" asp-route-search="@searchTerm" asp-route-categoryId="@selectedCategory" asp-route-sortBy="@sortBy" asp-route-page="@(currentPage - 1)" style="padding: 8px 12px; background: #f0f0f0; border-radius: 4px; text-decoration: none; color: #333;">← Previous</a>
+                        }
+
+                        @for (int i = 1; i <= totalPages; i++)
+                        {
+                            if (i == currentPage)
+                            {
+                                <span style="padding: 8px 12px; background: #007bff; color: white; border-radius: 4px;">@i</span>
+                            }
+                            else if (i <= currentPage + 2 && i >= currentPage - 2)
+                            {
+                                <a asp-action="Index" asp-controller="Home" asp-route-search="@searchTerm" asp-route-categoryId="@selectedCategory" asp-route-sortBy="@sortBy" asp-route-page="@i" style="padding: 8px 12px; background: #f0f0f0; border-radius: 4px; text-decoration: none; color: #333;">@i</a>
+                            }
+                        }
+
+                        if (currentPage < totalPages)
+                        {
+                            <a asp-action="Index" asp-controller="Home" asp-route-search="@searchTerm" asp-route-categoryId="@selectedCategory" asp-route-sortBy="@sortBy" asp-route-page="@(currentPage + 1)" style="padding: 8px 12px; background: #f0f0f0; border-radius: 4px; text-decoration: none; color: #333;">Next →</a>
+                        }
+                    }
+                </div>
+            </div>
+        }
     </div>
 </section>
 

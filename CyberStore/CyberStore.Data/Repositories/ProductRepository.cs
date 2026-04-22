@@ -44,4 +44,20 @@ public class ProductRepository : GenericRepository<Product>, IProductRepository
             .Include(p => p.Brand)
             .ToListAsync();
     }
+
+    public async Task<IEnumerable<Product>> GetSortedProductsAsync(string sortBy = "name")
+    {
+        var query = _dbSet
+            .Include(p => p.Category)
+            .Include(p => p.Brand);
+
+        return sortBy switch
+        {
+            "price_asc" => await query.OrderBy(p => p.Price).ToListAsync(),
+            "price_desc" => await query.OrderByDescending(p => p.Price).ToListAsync(),
+            "newest" => await query.OrderByDescending(p => p.Id).ToListAsync(),
+            "name" => await query.OrderBy(p => p.Name).ToListAsync(),
+            _ => await query.OrderBy(p => p.Name).ToListAsync()
+        };
+    }
 }

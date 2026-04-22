@@ -1,11 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
 using CyberStore.Core.Entities;
 using CyberStore.Application.Services.Interfaces;
+using CyberStore.Application.Common;
+
 namespace CyberStore.Controllers;
+
 public class HomeController(IProductService productService, IContactService contactService)
     : Controller
 {
-    public async Task<IActionResult> Index(string search = "", int categoryId = 0)
+    public async Task<IActionResult> Index(string search = "", int categoryId = 0, string sortBy = "name", int page = 1)
     {
         IEnumerable<Product> products;
 
@@ -22,9 +25,28 @@ public class HomeController(IProductService productService, IContactService cont
             products = await productService.GetAllProductsAsync();
         }
 
+        // Apply sorting
+        products = sortBy switch
+        {
+            "price_asc" => products.OrderBy(p => p.Price),
+            "price_desc" => products.OrderByDescending(p => p.Price),
+            "newest" => products.OrderByDescending(p => p.Id),
+            "name" => products.OrderBy(p => p.Name),
+            _ => products.OrderBy(p => p.Name)
+        };
+
+        // Apply pagination
+        const int pageSize = 12;
+        var pagedResults = products.Paginate(page, pageSize);
+
         ViewData["SearchTerm"] = search;
         ViewData["SelectedCategory"] = categoryId;
-        return View(products);
+        ViewData["SortBy"] = sortBy;
+        ViewData["CurrentPage"] = page;
+        ViewData["TotalPages"] = pagedResults.TotalPages;
+        ViewData["TotalCount"] = pagedResults.TotalCount;
+
+        return View(pagedResults.Items);
     }
     public IActionResult Contact()
     {

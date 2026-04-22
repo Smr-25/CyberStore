@@ -35,4 +35,9 @@ public class ProductService : IProductService
 
         return await _unitOfWork.Products.SearchProductsAsync(searchTerm);
     }
+
+    public async Task<IEnumerable<Product>> GetSortedProductsAsync(string sortBy = "name")
+    {
+        return await _unitOfWork.Products.GetSortedProductsAsync(sortBy);
+    }
 }
