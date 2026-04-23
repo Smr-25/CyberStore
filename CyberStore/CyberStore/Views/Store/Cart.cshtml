@@ -156,7 +156,7 @@
                 {
                     <h3>Cart Totals</h3>
                     <p>Total: $@Model.Sum(x => x.Product.Price * x.Quantity)</p>
-                    <a href="#" class="btn btn-primary">Proceed to Checkout</a>
+                    <a asp-controller="Order" asp-action="Create" class="btn btn-primary">Proceed to Checkout</a>
                 }
             </div>
         </div>

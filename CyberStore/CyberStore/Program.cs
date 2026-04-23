@@ -22,6 +22,7 @@ builder.Services.AddScoped<CyberStore.Application.Services.Interfaces.IProductSe
 builder.Services.AddScoped<CyberStore.Application.Services.Interfaces.ICartService, CyberStore.Application.Services.CartService>();
 builder.Services.AddScoped<CyberStore.Application.Services.Interfaces.IWishlistService, CyberStore.Application.Services.WishlistService>();
 builder.Services.AddScoped<CyberStore.Application.Services.Interfaces.IContactService, CyberStore.Application.Services.ContactService>();
+builder.Services.AddScoped<CyberStore.Application.Services.Interfaces.IOrderService, CyberStore.Application.Services.OrderService>();
 
 var app = builder.Build();
 

@@ -10,6 +10,8 @@ public interface IUnitOfWork : IDisposable
     IGenericRepository<CyberStore.Core.Entities.CartItem> CartItems { get; }
     IGenericRepository<CyberStore.Core.Entities.WishlistItem> WishlistItems { get; }
     IGenericRepository<CyberStore.Core.Entities.ContactMessage> ContactMessages { get; }
+    IGenericRepository<CyberStore.Core.Entities.Order> Orders { get; }
+    IGenericRepository<CyberStore.Core.Entities.OrderItem> OrderItems { get; }
     
     Task<int> CompleteAsync();
 }

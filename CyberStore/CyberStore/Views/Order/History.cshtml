@@ -1,0 +1,72 @@
+@model IEnumerable<CyberStore.Core.Entities.Order>
+@{
+    ViewData["Title"] = "Order History";
+}
+
+<section style="padding: 40px 20px; background: #f5f5f5; min-height: 500px;">
+    <div style="max-width: 1000px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px;">
+        <h2 style="margin-bottom: 30px;">My Order History</h2>
+
+        @if (Model.Any())
+        {
+            <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd;">
+                <thead style="background: #f0f0f0;">
+                    <tr>
+                        <th style="padding: 12px; text-align: left; border-bottom: 2px solid #ddd;">Order ID</th>
+                        <th style="padding: 12px; text-align: left; border-bottom: 2px solid #ddd;">Date</th>
+                        <th style="padding: 12px; text-align: left; border-bottom: 2px solid #ddd;">Status</th>
+                        <th style="padding: 12px; text-align: right; border-bottom: 2px solid #ddd;">Total</th>
+                        <th style="padding: 12px; text-align: center; border-bottom: 2px solid #ddd;">Items</th>
+                        <th style="padding: 12px; text-align: center; border-bottom: 2px solid #ddd;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model)
+                    {
+                        <tr>
+                            <td style="padding: 12px; border-bottom: 1px solid #ddd;">#@order.Id</td>
+                            <td style="padding: 12px; border-bottom: 1px solid #ddd;">@order.OrderDate.ToString("yyyy-MM-dd")</td>
+                            <td style="padding: 12px; border-bottom: 1px solid #ddd;">
+                                <span style="padding: 4px 8px; border-radius: 4px; background: @GetStatusColor(order.Status); color: white;">
+                                    @order.Status
+                                </span>
+                            </td>
+                            <td style="padding: 12px; border-bottom: 1px solid #ddd; text-align: right; font-weight: bold;">$@order.TotalAmount.ToString("0.00")</td>
+                            <td style="padding: 12px; border-bottom: 1px solid #ddd; text-align: center;">@order.Items.Count</td>
+                            <td style="padding: 12px; border-bottom: 1px solid #ddd; text-align: center;">
+                                <a asp-controller="Order" asp-action="Details" asp-route-id="@order.Id" style="color: #007bff; text-decoration: none;">View</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div style="text-align: center; padding: 40px; color: #666;">
+                <p>You haven't placed any orders yet.</p>
+                <a asp-controller="Home" asp-action="Index" style="display: inline-block; margin-top: 20px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 4px;">Start Shopping</a>
+            </div>
+        }
+
+        <div style="margin-top: 30px; text-align: center;">
+            <a asp-controller="Home" asp-action="Index" style="display: inline-block; padding: 10px 20px; background: #6c757d; color: white; text-decoration: none; border-radius: 4px;">Back to Store</a>
+        </div>
+    </div>
+</section>
+
+@functions {
+    private string GetStatusColor(CyberStore.Core.Entities.OrderStatus status)
+    {
+        return status switch
+        {
+            CyberStore.Core.Entities.OrderStatus.Pending => "#ffc107",
+            CyberStore.Core.Entities.OrderStatus.Processing => "#17a2b8",
+            CyberStore.Core.Entities.OrderStatus.Shipped => "#0275d8",
+            CyberStore.Core.Entities.OrderStatus.Delivered => "#28a745",
+            CyberStore.Core.Entities.OrderStatus.Cancelled => "#dc3545",
+            _ => "#6c757d"
+        };
+    }
+}
+

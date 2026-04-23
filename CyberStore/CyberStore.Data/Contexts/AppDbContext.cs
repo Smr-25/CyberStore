@@ -11,12 +11,14 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     public DbSet<CartItem> CartItems { get; set; } = null!;
     public DbSet<WishlistItem> WishlistItems { get; set; } = null!;
     public DbSet<ContactMessage> ContactMessages { get; set; } = null!;
+    public DbSet<Order> Orders { get; set; } = null!;
+    public DbSet<OrderItem> OrderItems { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
         
-        // Define some basic constraints or seed data if needed
+        // ...existing code...
         modelBuilder.Entity<Product>()
             .Property(p => p.Price)
             .HasColumnType("decimal(18,2)");
@@ -25,7 +27,28 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
             .Property(p => p.OldPrice)
             .HasColumnType("decimal(18,2)");
 
-        // Seed Data
+        // Order and OrderItem configuration
+        modelBuilder.Entity<Order>()
+            .Property(o => o.TotalAmount)
+            .HasColumnType("decimal(18,2)");
+
+        modelBuilder.Entity<OrderItem>()
+            .Property(oi => oi.UnitPrice)
+            .HasColumnType("decimal(18,2)");
+
+        modelBuilder.Entity<Order>()
+            .HasMany(o => o.Items)
+            .WithOne(oi => oi.Order)
+            .HasForeignKey(oi => oi.OrderId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<OrderItem>()
+            .HasOne(oi => oi.Product)
+            .WithMany()
+            .HasForeignKey(oi => oi.ProductId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        // ...existing code...
         modelBuilder.Entity<Category>().HasData(
             new Category { Id = 1, Name = "Laptops & Tablets", Icon = "fa-laptop" },
             new Category { Id = 2, Name = "Smartphones", Icon = "fa-mobile" },

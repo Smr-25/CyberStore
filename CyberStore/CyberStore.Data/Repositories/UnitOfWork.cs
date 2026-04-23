@@ -13,6 +13,8 @@ public class UnitOfWork : IUnitOfWork
     public IGenericRepository<CyberStore.Core.Entities.CartItem> CartItems { get; private set; }
     public IGenericRepository<CyberStore.Core.Entities.WishlistItem> WishlistItems { get; private set; }
     public IGenericRepository<CyberStore.Core.Entities.ContactMessage> ContactMessages { get; private set; }
+    public IGenericRepository<CyberStore.Core.Entities.Order> Orders { get; private set; }
+    public IGenericRepository<CyberStore.Core.Entities.OrderItem> OrderItems { get; private set; }
 
     public UnitOfWork(AppDbContext context)
     {
@@ -23,6 +25,8 @@ public class UnitOfWork : IUnitOfWork
         CartItems = new GenericRepository<CyberStore.Core.Entities.CartItem>(_context);
         WishlistItems = new GenericRepository<CyberStore.Core.Entities.WishlistItem>(_context);
         ContactMessages = new GenericRepository<CyberStore.Core.Entities.ContactMessage>(_context);
+        Orders = new GenericRepository<CyberStore.Core.Entities.Order>(_context);
+        OrderItems = new GenericRepository<CyberStore.Core.Entities.OrderItem>(_context);
     }
 
     public async Task<int> CompleteAsync()
