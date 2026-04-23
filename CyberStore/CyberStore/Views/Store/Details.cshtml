@@ -52,13 +52,13 @@
 <header class="main-header">
     <div class="main-header-container">
         <div class="logo-section">
-            <a href="index.html" style="text-decoration: none; color: inherit;">
+            <a asp-controller="Home" asp-action="Index" style="text-decoration: none; color: inherit;">
                 <h1 class="logo">CYBERSTORE<span class="logo-dot">.</span></h1>
             </a>
         </div>
 
         <nav class="main-navigation">
-            <a href="index.html">Home</a>
+            <a asp-controller="Home" asp-action="Index">Home</a>
             <a href="#">Pages</a>
             <a href="#" class="active">Shop</a>
             <a href="#">Blog</a>
@@ -77,11 +77,11 @@
                 <i class="fa-solid fa-sliders"></i>
             </button>
 
-            <a href="wishlist.html" class="action-btn wishlist-btn">
+            <a asp-controller="Store" asp-action="Wishlist" class="action-btn wishlist-btn">
                 <i class="fa-regular fa-heart"></i>
             </a>
 
-            <a href="cart.html" class="action-btn cart-btn">
+            <a asp-controller="Store" asp-action="Cart" class="action-btn cart-btn">
                 <i class="fa-solid fa-cart-shopping"></i>
                 <span class="cart-count">0</span>
                 <span class="cart-total">($0)</span>
@@ -471,7 +471,7 @@
                 <li><a href="#">About us</a></li>
                 <li><a href="#">Our Services</a></li>
                 <li><a href="#">Stores</a></li>
-                <li><a href="contactus.html">Contact Us</a></li>
+                <li><a asp-controller="Home" asp-action="Contact">Contact Us</a></li>
                 <li><a href="#">Order Tracking</a></li>
             </ul>
         </div>

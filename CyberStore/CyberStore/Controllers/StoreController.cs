@@ -14,8 +14,7 @@ public class StoreController(
         var product = await productService.GetProductByIdAsync(id);
         if (product == null)
         {
-            var allProducts = await productService.GetAllProductsAsync();
-            product = allProducts.FirstOrDefault();
+            return RedirectToAction("Index", "Home");
         }
         return View(product);
     }
