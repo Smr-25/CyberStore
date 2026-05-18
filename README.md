@@ -58,7 +58,7 @@ Connection string is configured in:
 
 - `CyberStore/CyberStore/appsettings.json`
 
-Default key:
+Current default key in repository:
 
 ```json
 "ConnectionStrings": {
@@ -66,7 +66,15 @@ Default key:
 }
 ```
 
-> Update `DefaultConnection` to your SQL Server instance for local development.
+This project is configured to use **SQL Server** (`UseSqlServer` in `Program.cs`), so set `DefaultConnection` to a SQL Server connection string before running.
+
+Example:
+
+```json
+"ConnectionStrings": {
+  "DefaultConnection": "Server=localhost;Database=CyberStoreDb;Trusted_Connection=True;TrustServerCertificate=True"
+}
+```
 
 ## ▶️ Run Locally
 
